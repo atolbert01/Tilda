@@ -111,12 +111,6 @@ else if (keyRight)
 }
 else if (keyUp) aimDir = 90;
 else if (!grounded && keyDown) aimDir = 270;
-		
-		
-if (keyShoot)
-{
-	
-}
 
 // Horizontal Collisions
 if (place_meeting(x + hsp, y, oWall))
@@ -151,6 +145,33 @@ if (place_meeting(x, y + 1, oWall))
 	grounded = true;
 	if (keyJump || (keyJumpHeld && jumpHoldTimer < 10)) vsp = jumpForce;
 }
+
+// Move the hackerstone
+var stoneTargetX = x - (12 * sign(image_xscale));
+var stoneTargetY = y - 24;
+hackerStone.x = lerp(hackerStone.x, stoneTargetX, 0.15);
+hackerStone.y = lerp(hackerStone.y, stoneTargetY, 0.15);
+
+
+// Handle the shootin'
+if (canShoot && keyShootHeld)
+{
+	// This ?? is like a javascript 'nullish' operator, or a ternary statement in C#. If popping yields undefined, create a new bullet
+	var bullet = ds_stack_pop(roomManager.playerBullets) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet);
+	
+	with (bullet)
+	{ 
+		instance_activate_object(self);
+		visible = true;
+		x = other.hackerStone.x;
+		y = other.hackerStone.y;
+		roomManager = other.roomManager;
+		hsp = 8 * sign(other.image_xscale) ;
+	}
+	canShoot = false;
+	alarm[0] = shotInterval;
+}
+
 
 // Update animation state
 if (grounded)

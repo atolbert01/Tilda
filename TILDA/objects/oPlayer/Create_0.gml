@@ -24,6 +24,7 @@ left = 180;
 right = 0;
 facing = right;
 isPlanted = false;
+isShooting = false;
 
 accel = 1.0;
 decel = 1.0;
@@ -34,4 +35,12 @@ adjCamY = camera_get_view_y(view_camera[0]);
 camZoom = 1;
 camZoomFactor = 0.2;
 
-currentRoomManager = undefined;
+//currentRoomManager = undefined;
+
+hackerStone = instance_create_layer(x, y - 24, "Instances", oHackerStone);
+hackerStone.image_speed = 0.4;
+
+canShoot = true;
+shotInterval = 10;
+
+roomManager = oRoomManager;
