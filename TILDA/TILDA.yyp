@@ -41,6 +41,7 @@
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sPlayerRun","path":"sprites/sPlayerRun/sPlayerRun.yy",},},
     {"id":{"name":"sHackerStoneVariant","path":"sprites/sHackerStoneVariant/sHackerStoneVariant.yy",},},
+    {"id":{"name":"oGameActor","path":"objects/oGameActor/oGameActor.yy",},},
     {"id":{"name":"sHackerStone","path":"sprites/sHackerStone/sHackerStone.yy",},},
     {"id":{"name":"sTiles","path":"sprites/sTiles/sTiles.yy",},},
     {"id":{"name":"shdBktGlitch","path":"shaders/shdBktGlitch/shdBktGlitch.yy",},},

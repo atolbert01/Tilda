@@ -23,6 +23,7 @@
     {"name":"oGlobals","order":7,"path":"objects/oGlobals/oGlobals.yy",},
     {"name":"sPlayerRun","order":1,"path":"sprites/sPlayerRun/sPlayerRun.yy",},
     {"name":"sHackerStoneVariant","order":10,"path":"sprites/sHackerStoneVariant/sHackerStoneVariant.yy",},
+    {"name":"oGameActor","order":8,"path":"objects/oGameActor/oGameActor.yy",},
     {"name":"sHackerStone","order":9,"path":"sprites/sHackerStone/sHackerStone.yy",},
     {"name":"sTiles","order":3,"path":"sprites/sTiles/sTiles.yy",},
     {"name":"sPlayerJumpFall","order":5,"path":"sprites/sPlayerJumpFall/sPlayerJumpFall.yy",},

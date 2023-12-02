@@ -1,3 +1,7 @@
+// Inherit the parent event
+event_inherited();
+if (!doStep) exit;
+
 var keyAim = keyboard_check(vk_shift) || keyboard_check(ord("C")) || gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
 
 var keyRight = keyboard_check(vk_right) || keyboard_check(ord("D")) || gamepad_axis_value(0, gp_axislh) > 0.3 || gamepad_button_check(0, gp_padr);
