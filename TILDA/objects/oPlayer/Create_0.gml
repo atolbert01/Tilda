@@ -37,10 +37,11 @@ camZoomFactor = 0.2;
 
 //currentRoomManager = undefined;
 
-hackerStone = instance_create_layer(x, y - 24, "Instances", oHackerStone);
+//hackerStone = instance_create_layer(x, y - 24, "Instances", oHackerStone);
+hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
 hackerStone.image_speed = 0.4;
 
 canShoot = true;
-shotInterval = 10;
+shotInterval = 8;
 
 roomManager = oRoomManager;
