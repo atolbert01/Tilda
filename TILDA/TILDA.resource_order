@@ -15,6 +15,7 @@
     {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Extensions","order":14,"path":"folders/Extensions.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
+    {"name":"bktGlitch","order":1,"path":"folders/Scripts/bktGlitch.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"sPlayerRun","order":1,"path":"sprites/sPlayerRun/sPlayerRun.yy",},
@@ -24,8 +25,10 @@
     {"name":"sPlayerJumpFall","order":5,"path":"sprites/sPlayerJumpFall/sPlayerJumpFall.yy",},
     {"name":"oCamera","order":2,"path":"objects/oCamera/oCamera.yy",},
     {"name":"oWall","order":1,"path":"objects/oWall/oWall.yy",},
+    {"name":"bktGlitch_inline","order":1,"path":"scripts/bktGlitch_inline/bktGlitch_inline.yy",},
     {"name":"sBullet1","order":11,"path":"sprites/sBullet1/sBullet1.yy",},
     {"name":"SPlayerShootIdle","order":7,"path":"sprites/SPlayerShootIdle/SPlayerShootIdle.yy",},
+    {"name":"oHackerMode","order":6,"path":"objects/oHackerMode/oHackerMode.yy",},
     {"name":"oBullet","order":4,"path":"objects/oBullet/oBullet.yy",},
     {"name":"oRoomManager","order":5,"path":"objects/oRoomManager/oRoomManager.yy",},
     {"name":"sPlayerJumpCrest","order":6,"path":"sprites/sPlayerJumpCrest/sPlayerJumpCrest.yy",},

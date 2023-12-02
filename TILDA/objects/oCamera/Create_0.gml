@@ -16,7 +16,9 @@ camWidth = camera_get_view_width(view_camera[0]);
 camHeight = camera_get_view_height(view_camera[0]);
 var xPos = (display_get_width() * 0.5) - (camWidth * 0.5);
 var yPos = (display_get_height() * 0.5) - (camHeight * 0.5);
-window_set_rectangle(xPos, yPos, camWidth, camHeight);
+window_set_rectangle(xPos, yPos, camWidth * 2, camHeight * 2);
+
+//show_debug_message(string(camWidth) + ", "+ string(camHeight));
 
 surface_resize(application_surface, camWidth, camHeight);
 

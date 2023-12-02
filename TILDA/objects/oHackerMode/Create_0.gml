@@ -1,0 +1,1 @@
+application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
