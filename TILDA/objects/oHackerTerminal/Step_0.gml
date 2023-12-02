@@ -4,7 +4,7 @@ if (result == true)
 	color = c_red;
 	if (alarm[0] == -1) 
 	{
-		if(cursorVisible) 
+		if(global.hackerMode) 
 		{
 			value = string_copy(value, 0, string_length(value) - 1) + " ";
 		}

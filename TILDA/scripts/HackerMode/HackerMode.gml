@@ -34,6 +34,7 @@ function do_element()
 		if (mouse_check_button_pressed(mb_left))
 		{
 			isActive = true;
+			show_debug_message("Click!");
 		}
 	}
 	return isActive;

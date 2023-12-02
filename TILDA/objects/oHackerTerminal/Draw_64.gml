@@ -7,8 +7,9 @@ if (label != "")
 	//draw_set_color(0x393c32);
 	draw_set_color(0x6e9437)
 	draw_text(x + marginX, y, label);
-	draw_set_color(c_white);
 }
-//draw_text(x + margin, y + margin, value);
+draw_set_color(0x30be6a)
+draw_text(x + marginX, y + 16, "~ " + value);
 
+draw_set_color(c_white);
 draw_set_alpha(1);

@@ -3,10 +3,10 @@ event_inherited();
 subElements = [];
 
 label = "HACKER_STONE";
-value = "...";
-valuePrev = "...";
+value = "";
+valuePrev = "";
 
-charLimit = 8;
+charLimit = 18;
 marginX = 2;
 marginY = 1;
 
@@ -16,11 +16,10 @@ boundsY1 = y;
 boundsX2 = x + boundsWidth;
 boundsY2 = y + boundsHeight;
 
-cursorVisible = false;
 allowLetters = true;
 allowNumbers = true;
 
-enabledLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+enabledLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
 enabledNumbers = "0123456789";
 
 alpha = 0.8;

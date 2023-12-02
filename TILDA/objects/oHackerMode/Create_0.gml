@@ -14,14 +14,15 @@ var terminalHeight = 32;
 terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);
 with (terminalPanel)
 {
-	//boundsWidth = camera_get_view_width(view_camera[0]);
-	//boundsHeight = camera_get_view_height(view_camera[0]); 
-	//boundsHeight = 128;
-	//boundsX2 = x + boundsWidth;
-	//boundsY2 = y + boundsHeight;
 	drawMe = false;
-	//sprite_index = sHackerTerminal;
 	image_xscale = 4;
 	image_yscale = 2;
+	
+	boundsX1 = bbox_left;
+	boundsY1 = bbox_top;
+	boundsX2 = bbox_right;
+	boundsY2 = bbox_bottom;
+	//boundsX2 = x + (16 * image_xscale);
+	//boundsY2 = y + (16 * image_yscale);
 }
 draw_set_font(fntRetro);
