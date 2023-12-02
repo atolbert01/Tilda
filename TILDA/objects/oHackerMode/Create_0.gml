@@ -11,7 +11,7 @@ application_surface_draw_enable(false);
 var terminalWidth = 128;
 var terminalHeight = 32;
 
-terminalPanel = instance_create_layer(24, 164, "HackerMode", oPanel);
+terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);
 with (terminalPanel)
 {
 	//boundsWidth = camera_get_view_width(view_camera[0]);
@@ -20,7 +20,8 @@ with (terminalPanel)
 	//boundsX2 = x + boundsWidth;
 	//boundsY2 = y + boundsHeight;
 	drawMe = false;
-	sprite_index = sHackerTerminal;
+	//sprite_index = sHackerTerminal;
 	image_xscale = 4;
 	image_yscale = 2;
 }
+draw_set_font(fntRetro);

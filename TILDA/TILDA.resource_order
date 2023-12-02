@@ -27,7 +27,7 @@
     {"name":"oGameActor","order":8,"path":"objects/oGameActor/oGameActor.yy",},
     {"name":"sHackerStone","order":9,"path":"sprites/sHackerStone/sHackerStone.yy",},
     {"name":"sTiles","order":3,"path":"sprites/sTiles/sTiles.yy",},
-    {"name":"oPanel","order":10,"path":"objects/oPanel/oPanel.yy",},
+    {"name":"oHackerTerminal","order":10,"path":"objects/oHackerTerminal/oHackerTerminal.yy",},
     {"name":"sPlayerJumpFall","order":5,"path":"sprites/sPlayerJumpFall/sPlayerJumpFall.yy",},
     {"name":"SHD_CRT","order":1,"path":"shaders/SHD_CRT/SHD_CRT.yy",},
     {"name":"oCamera","order":2,"path":"objects/oCamera/oCamera.yy",},
