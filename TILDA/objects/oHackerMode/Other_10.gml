@@ -3,7 +3,8 @@
 global.hackerMode = !global.hackerMode;
 with(oGameActor)
 {
-	doStep = !doStep;
+	doStep = !global.hackerMode;
+	//speed = 0;
 }
 if (global.hackerMode)
 {
@@ -15,3 +16,5 @@ else
 	CRT.ShaderOn = false;
 	glitchIntensity = 0;
 }
+
+show_hide_panel(terminalPanel);

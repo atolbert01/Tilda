@@ -1,5 +1,7 @@
+//drawColor = colorNormal;
 if (global.hackerMode)
 {
+	//drawColor = colorHacker;
 	shader_set(SHD_CRT);
 
 	// If using shader on GUI layer, set resolution

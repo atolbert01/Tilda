@@ -184,9 +184,10 @@ if (canShoot && keyShootHeld)
 		x = other.hackerStone.x;
 		y = other.hackerStone.y;
 		roomManager = other.roomManager;
-		//hsp = 8 * sign(other.image_xscale) ;
-		speed = 8;
-		direction = other.aimDir;
+		//speed = 8;
+		//direction = other.aimDir;
+		spd = 8;
+		dir = other.aimDir;
 	}
 	canShoot = false;
 	alarm[0] = shotInterval;

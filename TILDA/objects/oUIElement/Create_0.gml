@@ -1,0 +1,13 @@
+elementId = 0;
+color = $00FFFFFF;
+drawMe = true;
+isActive = false;
+isHot = false;
+boundsWidth = 128;
+boundsHeight = 24;
+boundsX1 = 0;
+boundsY1 = 0;
+boundsX2 = 0;
+boundsY2 = 0;
+activatedFunction = undefined;
+deselect = undefined;
