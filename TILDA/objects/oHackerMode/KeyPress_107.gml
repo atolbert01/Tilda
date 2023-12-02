@@ -1,0 +1,1 @@
+glitchIntensity += 0.025;
