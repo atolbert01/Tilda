@@ -1,13 +1,27 @@
+var keyAim = keyboard_check(vk_shift) || keyboard_check(ord("C")) || gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
+
 var keyRight = keyboard_check(vk_right) || keyboard_check(ord("D")) || gamepad_axis_value(0, gp_axislh) > 0.3 || gamepad_button_check(0, gp_padr);
 var keyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_axis_value(0, gp_axislh) < -0.3 || gamepad_button_check(0, gp_padl);
 var keyDown = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
-var keyUp = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
+var keyUp = keyboard_check(ord("W")) || keyboard_check(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
+
 var keyJump = keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(0, gp_face1);
 var keyJumpHeld = keyboard_check(vk_space) || keyboard_check(ord("Z")) || gamepad_button_check(0, gp_face1);
 var keyJumpReleased = keyboard_check_released(vk_space) || keyboard_check_released(ord("Z")) || gamepad_button_check_released(0, gp_face1);
+
+if (!keyAim)
+{
+	keyJump |= keyboard_check_pressed(ord("W"));
+	keyJump |= keyboard_check_pressed(vk_up);
+	keyJumpHeld |= keyboard_check(ord("W"));
+	keyJumpHeld |= keyboard_check(vk_up);
+	keyJumpReleased |= keyboard_check_released(ord("W"));
+	keyJumpReleased |= keyboard_check_released(vk_up);
+}
+
 var keyShoot = keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_face3);
 var keyShootHeld = keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
-var keyPlant = keyboard_check(ord("C")) || gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
+
 
 //var keyShootReleased = keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
 
@@ -40,7 +54,7 @@ if (place_meeting(x, y + 1, oWall))
 if (grounded)
 {
 	isPlanted = false;
-	if (keyPlant) 
+	if (keyAim) 
 	{
 		isPlanted = true;
 	}
