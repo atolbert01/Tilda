@@ -9,6 +9,9 @@ valuePrev = "";
 charLimit = 18;
 marginX = 2;
 marginY = 1;
+breakHeight = 16;
+cursorVisible = false;
+cursorRow = 1;
 
 boundsHeight = string_height(value) + (marginY * 2);
 boundsX1 = x;
@@ -23,3 +26,15 @@ enabledLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
 enabledNumbers = "0123456789";
 
 alpha = 0.8;
+
+activeColor = 0x30be6a;
+inactiveColor = 0x2f694b;
+
+textColor = activeColor;
+
+responseColor = 0x36f2fb;
+labelColor = 0x6e9437;
+
+textHistory = ds_list_create();
+
+terminalSurface = noone;

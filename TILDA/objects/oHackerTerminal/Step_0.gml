@@ -1,19 +1,7 @@
 var result = do_element();
 if (result == true)
 {
-	color = c_red;
-	if (alarm[0] == -1) 
-	{
-		if(global.hackerMode) 
-		{
-			value = string_copy(value, 0, string_length(value) - 1) + " ";
-		}
-		else 
-		{
-			value = string_copy(value, 0, string_length(value) - 1) + "|";
-		}
-		alarm[0] = 30;
-	}
+	if (alarm[0] == -1) alarm[0] = 30;
 	
 	if (keyboard_check_pressed(vk_backspace))
 	{
@@ -27,21 +15,19 @@ if (result == true)
 		
 		if ((string_count(chr(keyboard_key), enabledKeys)) && string_length(chr(keyboard_key)) == 1)
 		{
-			if (string_length(value) - 1 < charLimit) value = string_copy(value, 0, string_length(value) - 1) + chr(keyboard_key) + "|";
+			if (string_length(value) < charLimit) 
+				value = string_copy(value, 0, string_length(value)) + chr(keyboard_key);
 		}
 	}
-	
 	if (keyboard_check_pressed(vk_enter))
 	{
-		value = string_copy(value, 0, string_length(value) - 1) + " ";
 		if (activatedFunction != undefined) activatedFunction();
+		
+		alarm[0] = -1;
+		cursorVisible = false
 		valuePrev = value;
-		isActive = false;
+		value = "";
+		ds_list_add(textHistory, valuePrev);
+		cursorRow += 1;
 	}
-}
-else
-{
-	color = c_white;
-	value = string_copy(value, 0, string_length(value) - 1) + " ";
-	value = valuePrev;
 }

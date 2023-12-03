@@ -28,4 +28,6 @@ with (terminalPanel)
 	//boundsX2 = x + (16 * image_xscale);
 	//boundsY2 = y + (16 * image_yscale);
 }
+instance_deactivate_object(terminalPanel);
+
 draw_set_font(fntRetro);
