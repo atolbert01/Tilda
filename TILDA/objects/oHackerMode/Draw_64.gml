@@ -6,7 +6,7 @@ if (global.hackerMode)
 // Do glitch if we have any side effects
 if (glitchIntensity > 0)
 {
-	// Activating the shader
+	//// Activating the shader
 	bktglitch_activate();
 
 	// Quickly setting all parameters at once using a preset

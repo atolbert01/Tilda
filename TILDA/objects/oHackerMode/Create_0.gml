@@ -6,6 +6,9 @@ depth = -1000;
 glitchIntensity = 0;
 cursorSprite = sCursor;
 
+// Activating the shader
+bktglitch_activate();
+
 application_surface_draw_enable(false);
 
 var terminalWidth = 128;
