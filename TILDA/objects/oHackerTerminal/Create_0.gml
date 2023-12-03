@@ -11,7 +11,7 @@ marginX = 2;
 marginY = 1;
 breakHeight = 16;
 cursorVisible = false;
-cursorRow = 1;
+cursorRow = 0;
 
 boundsHeight = string_height(value) + (marginY * 2);
 boundsX1 = x;
@@ -39,4 +39,4 @@ textHistory = ds_list_create();
 
 terminalSurface = noone;
 
-scrollY = 0;
+scrollOffset = 0;

@@ -18,13 +18,13 @@ if (historySize > 0)
 {
 	for (var i = 0; i < historySize; i++)
 	{
-		draw_text_color(marginX + string_width("~ "), scrollY + (i + 1) * breakHeight, textHistory[| i], inactiveColor, inactiveColor, inactiveColor, inactiveColor, 0.8);
+		draw_text_color(marginX + string_width("~ "), ((i) * breakHeight) - scrollOffset, textHistory[| i], inactiveColor, inactiveColor, inactiveColor, inactiveColor, 0.8);
 	}
 }
 
 var terminalText = "~ " + value;
 if (isActive && cursorVisible) terminalText += "|";
-draw_text_color( marginX, scrollY + (cursorRow * breakHeight), terminalText, textColor, textColor, textColor, textColor, 0.8);
+draw_text_color( marginX, (cursorRow * breakHeight) - scrollOffset, terminalText, textColor, textColor, textColor, textColor, 0.8);
 
 surface_reset_target();
 draw_surface(terminalSurface, x, y + 17);

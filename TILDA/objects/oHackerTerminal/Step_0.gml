@@ -3,21 +3,19 @@ if (result == true)
 {
 	if (alarm[0] == -1) alarm[0] = 30;
 	
-	var keyDown = keyboard_check(vk_down) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
-	var keyUp = keyboard_check(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
+	var scrollDown = mouse_wheel_down() || keyboard_check_pressed(vk_down) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
+	var scrollUp = mouse_wheel_up() || keyboard_check_pressed(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
 	
-	if (keyUp)
+	if (scrollDown)
 	{
-		scrollY += 8;
-		show_debug_message("Up: " + string(scrollY));
+		scrollOffset = min(breakHeight * cursorRow, scrollOffset + 8);
 	}
 	
-	if (keyDown)
+	if (scrollUp)
 	{
-		scrollY -= 8;
-		show_debug_message("Down: " + string(scrollY));
+		scrollOffset = max(0, scrollOffset - 8);
 	}
-	
+
 	if (keyboard_check_pressed(vk_backspace))
 	{
 		value = string_copy(value, 0, string_length(value) - 1);
@@ -44,5 +42,10 @@ if (result == true)
 		value = "";
 		ds_list_add(textHistory, valuePrev);
 		cursorRow += 1;
+		
+		if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+		{
+			scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+		}
 	}
 }
