@@ -21,7 +21,7 @@ if (historySize > 0)
 {
 	for (var i = 0; i < historySize; i++)
 	{
-		draw_text_color(marginX + string_width("~ "), ((i) * breakHeight) - scrollOffset, textHistory[| i], inactiveColor, inactiveColor, inactiveColor, inactiveColor, 0.8);
+		draw_text_color(marginX + string_width("~ "), ((i) * breakHeight) - scrollOffset, textHistory[| i].text, textHistory[| i].color, textHistory[| i].color, textHistory[| i].color, textHistory[| i].color, 0.8);
 	}
 }
 

@@ -49,7 +49,7 @@ inactiveColor = 0x2f694b;
 
 textColor = activeColor;
 
-responseColor = 0x36f2fb;
+debugColor = 0x36f2fb;
 labelColor = 0x6e9437;
 
 textHistory = ds_list_create();

@@ -58,3 +58,41 @@ function do_element()
 	
 	return isActive;
 }
+
+function enter_text(input, newColor)
+{
+	ds_list_add(textHistory, { text : input, color : newColor });
+	cursorRow += 1;
+	if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+	{
+		scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+	}
+}
+
+function process_input(input)
+{ 
+	var tokens = string_split(input," ");
+	switch(tokens[0])
+	{
+		case "HELP" :
+		{
+			enter_text("COMMON FUNCTIONS", debugColor);
+			enter_text("\n", debugColor);
+			enter_text("CLS - CLEAR SCREEN", debugColor);
+			break;
+		}
+		case "CLS" :
+		{
+			ds_list_clear(textHistory);
+			scrollOffset = 0;
+			cursorRow = 0;
+			break;
+		}
+		default  :
+		{
+			
+			break;
+		}
+		
+	}
+}

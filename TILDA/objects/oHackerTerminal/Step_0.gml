@@ -57,12 +57,17 @@ if (result == true)
 		cursorVisible = false
 		valuePrev = value;
 		value = "";
-		ds_list_add(textHistory, valuePrev);
-		cursorRow += 1;
 		
-		if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
-		{
-			scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
-		}
+		enter_text(valuePrev, inactiveColor);
+		
+		//ds_list_add(textHistory, { text : valuePrev, color : inactiveColor });
+		//cursorRow += 1;
+		//if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+		//{
+		//	scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+		//}
+		
+		var input = string_trim(valuePrev);
+		if (input != "") process_input(input);
 	}
 }
