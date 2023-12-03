@@ -3,6 +3,21 @@ if (result == true)
 {
 	if (alarm[0] == -1) alarm[0] = 30;
 	
+	var keyDown = keyboard_check(vk_down) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
+	var keyUp = keyboard_check(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
+	
+	if (keyUp)
+	{
+		scrollY += 8;
+		show_debug_message("Up: " + string(scrollY));
+	}
+	
+	if (keyDown)
+	{
+		scrollY -= 8;
+		show_debug_message("Down: " + string(scrollY));
+	}
+	
 	if (keyboard_check_pressed(vk_backspace))
 	{
 		value = string_copy(value, 0, string_length(value) - 1);

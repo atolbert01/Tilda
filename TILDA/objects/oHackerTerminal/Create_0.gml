@@ -38,3 +38,5 @@ labelColor = 0x6e9437;
 textHistory = ds_list_create();
 
 terminalSurface = noone;
+
+scrollY = 0;
