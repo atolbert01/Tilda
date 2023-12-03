@@ -2,6 +2,13 @@
 event_inherited();
 subElements = [];
 
+drawMe = false;
+image_xscale = 4;
+image_yscale = 2;
+
+
+//show_debug_message(string(sprite_width) + ", " + string(sprite_height));
+
 label = "HACKER_STONE";
 value = "";
 valuePrev = "";
@@ -13,7 +20,12 @@ breakHeight = 16;
 cursorVisible = false;
 cursorRow = 0;
 
-boundsHeight = string_height(value) + (marginY * 2);
+//boundsHeight = string_height(value) + (marginY * 2);
+
+
+boundsWidth = sprite_width
+boundsHeight = sprite_height;
+
 boundsX1 = x;
 boundsY1 = y;
 boundsX2 = x + boundsWidth;
@@ -40,3 +52,4 @@ textHistory = ds_list_create();
 terminalSurface = noone;
 
 scrollOffset = 0;
+

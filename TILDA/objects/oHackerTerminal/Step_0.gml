@@ -31,6 +31,11 @@ if (result == true)
 			if (string_length(value) < charLimit) 
 				value = string_copy(value, 0, string_length(value)) + chr(keyboard_key);
 		}
+		
+		if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+		{
+			scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+		}
 	}
 	if (keyboard_check_pressed(vk_enter))
 	{
