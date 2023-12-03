@@ -31,6 +31,11 @@ boundsY1 = y;
 boundsX2 = x + boundsWidth;
 boundsY2 = y + boundsHeight;
 
+
+// use these to snap back into place if the player loses me
+startX = x;
+startY = y;
+
 allowLetters = true;
 allowNumbers = true;
 

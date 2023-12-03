@@ -5,6 +5,7 @@ if (result == true)
 	
 	var scrollDown = mouse_wheel_down() || keyboard_check_pressed(vk_down) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
 	var scrollUp = mouse_wheel_up() || keyboard_check_pressed(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
+	var ctrlDown = keyboard_check(vk_control);
 	
 	if (scrollDown)
 	{
@@ -15,12 +16,23 @@ if (result == true)
 	{
 		scrollOffset = max(0, scrollOffset - 8);
 	}
+	
+	if (ctrlDown && keyboard_check_pressed(ord("H")))
+	{
+		x = startX;
+		y = startY;
+		
+		boundsX1 = x;
+		boundsY1 = y;
+		boundsX2 = x + boundsWidth;
+		boundsY2 = y + boundsHeight;
+	}
 
 	if (keyboard_check_pressed(vk_backspace))
 	{
 		value = string_copy(value, 0, string_length(value) - 1);
 	}
-	else if (keyboard_check_pressed(vk_anykey))
+	else if (!ctrlDown && keyboard_check_pressed(vk_anykey))
 	{
 		var enabledKeys = "";
 		if (allowLetters) enabledKeys += enabledLetters;
