@@ -194,6 +194,10 @@ if (canShoot && keyShootHeld)
 }
 
 
+// Handle the shield
+shield.x = x;
+shield.y = y;
+
 // Update animation state
 if (grounded)
 {

@@ -77,7 +77,7 @@ function process_input(input)
 		case "HELP" :
 		{
 			enter_text("COMMON FUNCTIONS", debugColor);
-			enter_text("\n", debugColor);
+			enter_text("----------------\n", debugColor);
 			enter_text("CLS - CLEAR SCREEN", debugColor);
 			break;
 		}

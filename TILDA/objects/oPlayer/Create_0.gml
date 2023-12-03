@@ -38,7 +38,8 @@ camZoomFactor = 0.2;
 
 //currentRoomManager = undefined;
 
-//hackerStone = instance_create_layer(x, y - 24, "Instances", oHackerStone);
+shield = instance_create_depth(x, y, -25, oShieldBubble);
+
 hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
 hackerStone.image_speed = 0.4;
 
