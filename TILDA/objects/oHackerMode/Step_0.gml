@@ -7,10 +7,19 @@ if (global.hackerMode)
 {
 	
 	// Navigation keys
-	var panRight = keyboard_check(vk_right) || gamepad_axis_value(0, gp_axisrh) > 0.3 || gamepad_button_check(0, gp_padr);
-	var panLeft = keyboard_check(vk_left) || gamepad_axis_value(0, gp_axisrh) < -0.3 || gamepad_button_check(0, gp_padl);
-	var panDown = keyboard_check(vk_down) || gamepad_axis_value(0, gp_axisrv) > 0.3 || gamepad_button_check(0, gp_padd);
-	var panUp = keyboard_check(vk_up) || gamepad_axis_value(0, gp_axisrv) < -0.3 || gamepad_button_check(0, gp_padu);
+	var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
+	var panRight = gamepad_axis_value(0, gp_axisrh) > 0.3 || gamepad_button_check(0, gp_padr);
+	var panLeft = gamepad_axis_value(0, gp_axisrh) < -0.3 || gamepad_button_check(0, gp_padl);
+	var panDown = gamepad_axis_value(0, gp_axisrv) > 0.3 || gamepad_button_check(0, gp_padd);
+	var panUp = gamepad_axis_value(0, gp_axisrv) < -0.3 || gamepad_button_check(0, gp_padu);
+	
+	if (ctrlDown)
+	{
+		panRight |= keyboard_check(vk_right) | keyboard_check(ord("D"));
+		panLeft |= keyboard_check(vk_left) | keyboard_check(ord("A"));
+		panDown |= keyboard_check(vk_down) | keyboard_check(ord("S"));
+		panUp |= keyboard_check(vk_up) | keyboard_check(ord("W"));
+	}
 	var midClickDown = mouse_check_button(mb_middle);
 	
 	hsp = (panRight - panLeft) * panSpeed;

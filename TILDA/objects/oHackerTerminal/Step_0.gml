@@ -3,9 +3,15 @@ if (result == true)
 {
 	if (alarm[0] == -1) alarm[0] = 30;
 	
-	var scrollDown = mouse_wheel_down() || keyboard_check_pressed(vk_down) || gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
-	var scrollUp = mouse_wheel_up() || keyboard_check_pressed(vk_up) || gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
-	var ctrlDown = keyboard_check(vk_control);
+	var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
+	var scrollDown = mouse_wheel_down() || gamepad_axis_value(0, gp_axislv) > 0.3/* || gamepad_button_check(0, gp_padd)*/;
+	var scrollUp = mouse_wheel_up() || gamepad_axis_value(0, gp_axislv) < -0.3 /*|| gamepad_button_check(0, gp_padu)*/;
+	
+	if (!ctrlDown)
+	{
+		 scrollDown |= keyboard_check_pressed(vk_down);
+		 scrollUp |= keyboard_check_pressed(vk_up);
+	}
 	
 	if (scrollDown)
 	{
@@ -50,7 +56,7 @@ if (result == true)
 		{
 			value = string_copy(value, 0, string_length(value) - 1);
 		}
-		else if (!ctrlDown && keyboard_check_pressed(vk_anykey))
+		else if (!ctrlDown && !keyboard_check_pressed(vk_down) && !keyboard_check_pressed(vk_up) && keyboard_check_pressed(vk_anykey))
 		{
 			var enabledKeys = "";
 			if (allowLetters) enabledKeys += enabledLetters;
