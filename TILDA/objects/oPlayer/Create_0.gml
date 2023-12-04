@@ -39,11 +39,16 @@ camZoomFactor = 0.2;
 //currentRoomManager = undefined;
 
 shield = instance_create_depth(x, y, -25, oShieldBubble);
+shieldStrength = 100;
+shieldDrain = 1;
+shieldRecovery = 0.75;
+shieldCoolDownTime = 600;
 
 hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
 hackerStone.image_speed = 0.4;
 
 canShoot = true;
+keyShootHeld = false;
 shotInterval = 8;
 
 roomManager = oRoomManager;

@@ -46,6 +46,7 @@
     {"name":"db32","order":14,"path":"sprites/db32/db32.yy",},
     {"name":"sPlayerJumpCrest","order":6,"path":"sprites/sPlayerJumpCrest/sPlayerJumpCrest.yy",},
     {"name":"sWall","order":4,"path":"sprites/sWall/sWall.yy",},
+    {"name":"oHUD","order":12,"path":"objects/oHUD/oHUD.yy",},
     {"name":"sPlayerJumpRise","order":2,"path":"sprites/sPlayerJumpRise/sPlayerJumpRise.yy",},
     {"name":"sPlayerShootJump","order":8,"path":"sprites/sPlayerShootJump/sPlayerShootJump.yy",},
     {"name":"oHackerStone","order":3,"path":"objects/oHackerStone/oHackerStone.yy",},

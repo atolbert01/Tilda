@@ -28,7 +28,7 @@
     "name": "Sprites",
     "path": "folders/Sprites.yy",
   },
-  "preMultiplyAlpha": false,
+  "preMultiplyAlpha": true,
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",

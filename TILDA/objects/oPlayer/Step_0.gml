@@ -24,7 +24,7 @@ if (!keyAim)
 }
 
 var keyShoot = keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_face3);
-var keyShootHeld = keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
+keyShootHeld = keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
 
 
 //var keyShootReleased = keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
@@ -191,8 +191,25 @@ if (canShoot && keyShootHeld)
 	}
 	canShoot = false;
 	alarm[0] = shotInterval;
+	shieldStrength = max(0, shieldStrength - shieldDrain);
 }
 
+if (!keyShootHeld)
+{
+	if (!shield.coolDown)
+	{
+		shieldStrength = min(100, shieldStrength + shieldRecovery);
+	}
+}
+
+
+if (!shield.coolDown && shieldStrength <= 0) 
+{
+	shield.coolDown = true;
+	shield.visible = false;
+	alarm[1] = shieldCoolDownTime;
+	show_debug_message("Alarm set");
+}
 
 // Handle the shield
 shield.x = x;

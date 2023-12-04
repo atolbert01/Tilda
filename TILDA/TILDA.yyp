@@ -73,6 +73,7 @@
     {"id":{"name":"db32","path":"sprites/db32/db32.yy",},},
     {"id":{"name":"sPlayerJumpCrest","path":"sprites/sPlayerJumpCrest/sPlayerJumpCrest.yy",},},
     {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},},
+    {"id":{"name":"oHUD","path":"objects/oHUD/oHUD.yy",},},
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
     {"id":{"name":"sPlayerJumpRise","path":"sprites/sPlayerJumpRise/sPlayerJumpRise.yy",},},
     {"id":{"name":"sPlayerShootJump","path":"sprites/sPlayerShootJump/sPlayerShootJump.yy",},},

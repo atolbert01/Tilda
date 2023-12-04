@@ -4,7 +4,7 @@
   "name": "sBullet1",
   "bbox_bottom": 10,
   "bbox_left": 5,
-  "bbox_right": 11,
+  "bbox_right": 10,
   "bbox_top": 5,
   "bboxMode": 0,
   "collisionKind": 1,

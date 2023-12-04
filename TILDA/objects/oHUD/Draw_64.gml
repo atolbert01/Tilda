@@ -1,0 +1,1 @@
+draw_healthbar(shieldMeter.x1, shieldMeter.y1, shieldMeter.x2, shieldMeter.y2, player.shieldStrength, c_gray, c_red, c_green, 3, true, true);
