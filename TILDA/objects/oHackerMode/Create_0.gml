@@ -53,7 +53,10 @@ grabbedY = 0;
 regionWidth = 64;
 regionHeight = 32;
 
-padAmount = 2;
+gridWidth = room_width / GRID_SIZE;
+gridHeight = room_height / GRID_SIZE;
+
+padAmount = 8;
 
 deselect = function()
 {
@@ -64,11 +67,7 @@ deselect = function()
 	}
 }
 
-
-
 #endregion
-
-
 
 depth = -1000;
 cursorSprite = sCursor;

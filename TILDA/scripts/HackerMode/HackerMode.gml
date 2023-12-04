@@ -88,7 +88,7 @@ function process_input(input)
 			cursorRow = 0;
 			break;
 		}
-		case "EDITMODE" :
+		case "EDIT" :
 		{
 			enter_text("EDITING...", debugColor);
 			enter_text("CTRL + C TO STOP...", debugColor);

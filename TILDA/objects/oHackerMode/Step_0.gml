@@ -10,8 +10,8 @@ if (global.hackerMode)
 		var cursorX = mouse_x;
 		var cursorY = mouse_y;
 		var legalCoords = cursorX > 0 && cursorX < room_width && cursorY > 0 && cursorY < room_height;
-		var xx = clamp(round(cursorX / GRID_SIZE), 0, GRID_SIZE - 1);
-		var yy = clamp(round(cursorY / GRID_SIZE), 0, GRID_SIZE - 1);
+		var xx = clamp(round(cursorX / GRID_SIZE), 0, gridWidth - 1);
+		var yy = clamp(round(cursorY / GRID_SIZE), 0, gridHeight - 1);
 	
 		switch (editState)
 		{
@@ -188,17 +188,117 @@ if (global.hackerMode)
 			}
 			case EDIT_STATE.RESIZE_X1_Y1 :
 			{
+				if (mouse_check_button_released(mb_left))
+				{
+					grabbedRegion.isSelected = false;
+					grabbedRegion = noone;
+					cursorSprite = sCursor;
+					editState = EDIT_STATE.IDLE;
+					
+				}
+				else
+				{
+					var deltaX = (grabbedX - xx) * GRID_SIZE;
+					var newRegionX = xx * GRID_SIZE;
+					var newRegionWidth = grabbedRegion.width + deltaX;
+					grabbedRegion.x = newRegionX;
+					grabbedRegion.width = newRegionWidth;
+					
+					var deltaY = (grabbedY - yy) * GRID_SIZE;
+					var newRegionY = yy * GRID_SIZE;
+					var newRegionHeight = grabbedRegion.height + deltaY;
+					grabbedRegion.y = newRegionY;
+					grabbedRegion.height = newRegionHeight;
+					
+					grabbedX = xx;
+					grabbedY = yy;
+				}
+				
 				break;
 			}
 			case EDIT_STATE.RESIZE_X2_Y1 :
 			{
+				if (mouse_check_button_released(mb_left))
+				{
+					grabbedRegion.isSelected = false;
+					grabbedRegion = noone;
+					cursorSprite = sCursor;
+					editState = EDIT_STATE.IDLE;
+				}
+				else
+				{
+					var deltaX = (grabbedX - xx) * GRID_SIZE;
+					var newRegionX = xx * GRID_SIZE;
+					var newRegionWidth = grabbedRegion.width - deltaX;
+					grabbedRegion.width = newRegionWidth;
+					
+					var deltaY = (grabbedY - yy) * GRID_SIZE;
+					var newRegionY = yy * GRID_SIZE;
+					var newRegionHeight = grabbedRegion.height + deltaY;
+					grabbedRegion.y = newRegionY;
+					grabbedRegion.height = newRegionHeight;
+					
+					grabbedX = xx;
+					grabbedY = yy;
+				}
+				
 				break;
 			}
 			case EDIT_STATE.RESIZE_X2_Y2 :
 			{
+				if (mouse_check_button_released(mb_left))
+				{
+					grabbedRegion.isSelected = false;
+					grabbedRegion = noone;
+					cursorSprite = sCursor;
+					editState = EDIT_STATE.IDLE;
+				}
+				else
+				{
+					var deltaX = (grabbedX - xx) * GRID_SIZE;
+					var newRegionX = xx * GRID_SIZE;
+					var newRegionWidth = grabbedRegion.width - deltaX;
+					grabbedRegion.width = newRegionWidth;
+					
+					var deltaY = (grabbedY - yy) * GRID_SIZE;
+					var newRegionY = yy * GRID_SIZE;
+					var newRegionHeight = grabbedRegion.height - deltaY;
+					grabbedRegion.height = newRegionHeight;
+					
+					grabbedX = xx;
+					grabbedY = yy;
+				}
 				break;
 			}
 			case EDIT_STATE.RESIZE_X1_Y2 :
+			{
+				
+				if (mouse_check_button_released(mb_left))
+				{
+					grabbedRegion.isSelected = false;
+					grabbedRegion = noone;
+					cursorSprite = sCursor;
+					editState = EDIT_STATE.IDLE;
+				}
+				else
+				{
+					var deltaX = (grabbedX - xx) * GRID_SIZE;
+					var newRegionX = xx * GRID_SIZE;
+					var newRegionWidth = grabbedRegion.width + deltaX;
+					grabbedRegion.x = newRegionX;
+					grabbedRegion.width = newRegionWidth;
+					
+					var deltaY = (grabbedY - yy) * GRID_SIZE;
+					var newRegionY = yy * GRID_SIZE;
+					var newRegionHeight = grabbedRegion.height - deltaY;
+					grabbedRegion.height = newRegionHeight;
+					
+					grabbedX = xx;
+					grabbedY = yy;
+				}
+				break;
+			}
+			default : 
 			{
 				break;
 			}
