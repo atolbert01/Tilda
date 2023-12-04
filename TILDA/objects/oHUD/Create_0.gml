@@ -1,2 +1,16 @@
 player = oPlayer;
-shieldMeter = { x1 : 16, y1 : 16, x2 : 32, y2: 128 };
+shieldMeter = 
+{ 
+	x1 : 20, 
+	y1 : 20, 
+	x2 : 148, 
+	y2: 21, 
+};
+
+glitchMeter = 
+{ 
+	x1 : 20, 
+	y1 : 24, 
+	x2 : 148, 
+	y2: 26, 
+};

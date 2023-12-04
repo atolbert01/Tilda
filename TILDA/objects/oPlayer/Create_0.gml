@@ -59,3 +59,4 @@ useMouse = true;
 mouseAimStartX = 0;
 mouseAimStartY = 0; 
 isMouseAiming = false;
+glitchBudget = 100;

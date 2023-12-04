@@ -6,6 +6,9 @@ if (toggleHackerMode) event_user(0);
 if (global.hackerMode)
 {
 	
+	var enterPressed = keyboard_check_pressed(vk_enter);
+	var ePressed = keyboard_check_pressed(ord("E"));
+	
 	// Navigation keys
 	var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
 	var panRight = gamepad_axis_value(0, gp_axisrh) > 0.3 || gamepad_button_check(0, gp_padr);
@@ -60,6 +63,25 @@ if (global.hackerMode)
 		{
 			case EDIT_STATE.IDLE :
 			{
+				// Save these edits on enter
+				//if (ctrlDown && ePressed)
+				if (enterPressed)
+				{ 
+					var glitchCost = 0;
+					for (var i = 0; i < instance_number(oRegion); i++;)
+					{
+					    var region = instance_find(oRegion, i);
+						glitchCost -= (region.width / GRID_SIZE) * (region.height / GRID_SIZE);
+					}
+					
+					with(oRegion) 
+					{
+						apply_edits(); 
+					}
+					
+					set_glitch_budget(player, glitchCost);
+				}
+				
 				if (legalCoords)
 				{
 					var resizeState = -1;
@@ -102,10 +124,6 @@ if (global.hackerMode)
 									colRegion = true;
 									newGrabbedRegion = self;
 								}
-								else if (rectangle_in_rectangle(x, y, x + width, y + height, regionX, regionY, regionX2, regionY2) != 0)
-								{
-									colRegion = true;
-								}
 							}
 							if (colCursor && newGrabbedRegion != noone)
 							{
@@ -116,10 +134,9 @@ if (global.hackerMode)
 								grabbedY = yy;
 								cursorSprite = sCursor_Mover;
 							}
-							else if (!colRegion) // No collision, so place a new region
+							else // Place a new region
 							{
 								var newRegion = instance_create_layer(regionX, regionY, "HackerMode", oRegion);
-								show_debug_message("Region created");
 							}	
 						}
 					}
@@ -411,7 +428,7 @@ if (global.hackerMode)
 	}
 	
 }
-else
-{
+//else
+//{
 	
-}
+//}

@@ -76,12 +76,12 @@ function process_input(input)
 	{
 		case "HELP" :
 		{
-			enter_text("USEFUL FUNCTIONS", debugColor);
-			enter_text("----------------\n", debugColor);
+			enter_text("USEFUL FUNCTIONS", c_white);
+			enter_text("----------------\n", c_white);
 			enter_text("CTRL+H - FIND TERM", debugColor);
 			enter_text("\n", debugColor);
-			enter_text("KNOWN COMMANDS", debugColor);
-			enter_text("----------------\n", debugColor);
+			enter_text("KNOWN COMMANDS", c_white);
+			enter_text("----------------\n", c_white);
 			enter_text("CLS - CLEAR SCREEN", debugColor);
 			enter_text("EDIT - PLACE WALLS", debugColor);
 			enter_text("???? - ????", debugColor);
@@ -100,7 +100,8 @@ function process_input(input)
 		case "EDIT" :
 		{
 			enter_text("EDITING...", debugColor);
-			enter_text("CTRL + C TO STOP...", debugColor);
+			enter_text("ENTER:  APPLY", c_white);
+			enter_text("CTRL+C:  STOP", c_white);
 			with (oHackerMode)
 			{
 				editMode = true;
@@ -227,4 +228,9 @@ function corner_resize_zone(region, corner, padAmount)
 		}
 	}
 	return { x1 : 0, y1 : 0, x2 : 0, y2 : 0 };
+}
+
+function set_glitch_budget(player, amount)
+{
+	player.glitchBudget += amount;
 }
