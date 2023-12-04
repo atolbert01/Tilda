@@ -186,14 +186,18 @@ if (canShoot && keyShootHeld)
 		x = other.hackerStone.x;
 		y = other.hackerStone.y;
 		roomManager = other.roomManager;
-		//speed = 8;
-		//direction = other.aimDir;
 		spd = 8;
 		dir = other.aimDir;
 	}
 	canShoot = false;
-	alarm[0] = shotInterval;
+	shotTimer = shotInterval;
 	shieldStrength = max(0, shieldStrength - shieldDrain);
+}
+
+if (!canShoot)
+{
+	if (shotTimer > 0) shotTimer -= 1;
+	else canShoot = true;
 }
 
 if (!keyShootHeld)
@@ -209,8 +213,27 @@ if (!shield.coolDown && shieldStrength <= 0)
 {
 	shield.coolDown = true;
 	shield.visible = false;
-	alarm[1] = shieldCoolDownTime;
-	show_debug_message("Alarm set");
+	shieldCoolDownTimer = shieldCoolDownInterval;
+}
+if (shield.coolDown)
+{
+	if (keyShootHeld)
+	{
+		shield.coolDown = true;
+		shield.visible = false;
+		shieldCoolDownTimer = shieldCoolDownInterval;
+	}
+	else if (shieldCoolDownTimer > 0)
+	{
+		shieldCoolDownTimer -= 1;
+	}
+	else
+	{
+		if (!keyShootHeld) 
+		{
+			with (shield) event_user(0);
+		}
+	}
 }
 
 // Handle the shield

@@ -1,3 +1,9 @@
+event_inherited();
+if (!doStep) 
+{
+	exit;
+}
+
 var strength = player.shieldStrength;
 
 if (!coolDown)

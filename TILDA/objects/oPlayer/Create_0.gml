@@ -42,7 +42,8 @@ shield = instance_create_depth(x, y, -25, oShieldBubble);
 shieldStrength = 100;
 shieldDrain = 1;
 shieldRecovery = 0.75;
-shieldCoolDownTime = 600;
+shieldCoolDownInterval = 600;
+shieldCoolDownTimer = 0;
 
 hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
 hackerStone.image_speed = 0.4;
@@ -50,6 +51,7 @@ hackerStone.image_speed = 0.4;
 canShoot = true;
 keyShootHeld = false;
 shotInterval = 8;
+shotTimer = 0;
 
 roomManager = oRoomManager;
 
