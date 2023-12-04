@@ -141,10 +141,13 @@ if (global.hackerMode)
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height + deltaY;
-					grabbedRegion.y = newRegionY;
-					grabbedRegion.height = newRegionHeight;
-					grabbedX = xx;
-					grabbedY = yy;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.y = newRegionY;
+						grabbedRegion.height = newRegionHeight;
+						grabbedX = xx;
+						grabbedY = yy;
+					}
 				}
 				break;
 			}
@@ -163,10 +166,13 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width + deltaX;
-					grabbedRegion.x = newRegionX;
-					grabbedRegion.width = newRegionWidth;
-					grabbedX = xx;
-					grabbedY = yy;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.x = newRegionX;
+						grabbedRegion.width = newRegionWidth;
+						grabbedX = xx;
+						grabbedY = yy;
+					}
 				}
 				break;
 			}
@@ -184,9 +190,12 @@ if (global.hackerMode)
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height - deltaY;
-					grabbedRegion.height = newRegionHeight;
-					grabbedX = xx;
-					grabbedY = yy;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.height = newRegionHeight;
+						grabbedX = xx;
+						grabbedY = yy;
+					}
 				}
 				break;
 			}
@@ -204,9 +213,12 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width - deltaX;
-					grabbedRegion.width = newRegionWidth;
-					grabbedX = xx;
-					grabbedY = yy;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.width = newRegionWidth;
+						grabbedX = xx;
+						grabbedY = yy;
+					}
 				}
 				break;
 			}
@@ -225,14 +237,21 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width + deltaX;
-					grabbedRegion.x = newRegionX;
-					grabbedRegion.width = newRegionWidth;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.x = newRegionX;
+						grabbedRegion.width = newRegionWidth;
+					}
+
 					
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height + deltaY;
-					grabbedRegion.y = newRegionY;
-					grabbedRegion.height = newRegionHeight;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.y = newRegionY;
+						grabbedRegion.height = newRegionHeight;
+					}
 					
 					grabbedX = xx;
 					grabbedY = yy;
@@ -254,13 +273,19 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width - deltaX;
-					grabbedRegion.width = newRegionWidth;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.width = newRegionWidth;
+					}
 					
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height + deltaY;
-					grabbedRegion.y = newRegionY;
-					grabbedRegion.height = newRegionHeight;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.y = newRegionY;
+						grabbedRegion.height = newRegionHeight;
+					}
 					
 					grabbedX = xx;
 					grabbedY = yy;
@@ -282,12 +307,18 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width - deltaX;
-					grabbedRegion.width = newRegionWidth;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.width = newRegionWidth;
+					}
 					
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height - deltaY;
-					grabbedRegion.height = newRegionHeight;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.height = newRegionHeight;
+					}
 					
 					grabbedX = xx;
 					grabbedY = yy;
@@ -309,13 +340,20 @@ if (global.hackerMode)
 					var deltaX = (grabbedX - xx) * GRID_SIZE;
 					var newRegionX = xx * GRID_SIZE;
 					var newRegionWidth = grabbedRegion.width + deltaX;
-					grabbedRegion.x = newRegionX;
-					grabbedRegion.width = newRegionWidth;
+					if (newRegionWidth > GRID_SIZE)
+					{
+						grabbedRegion.x = newRegionX;
+						grabbedRegion.width = newRegionWidth;
+					}
+					
 					
 					var deltaY = (grabbedY - yy) * GRID_SIZE;
 					var newRegionY = yy * GRID_SIZE;
 					var newRegionHeight = grabbedRegion.height - deltaY;
-					grabbedRegion.height = newRegionHeight;
+					if (newRegionHeight > GRID_SIZE)
+					{
+						grabbedRegion.height = newRegionHeight;
+					}
 					
 					grabbedX = xx;
 					grabbedY = yy;
