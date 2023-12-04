@@ -5,6 +5,40 @@ if (toggleHackerMode) event_user(0);
 
 if (global.hackerMode)
 {
+	
+	// Navigation keys
+	var panRight = keyboard_check(vk_right) || gamepad_axis_value(0, gp_axisrh) > 0.3 || gamepad_button_check(0, gp_padr);
+	var panLeft = keyboard_check(vk_left) || gamepad_axis_value(0, gp_axisrh) < -0.3 || gamepad_button_check(0, gp_padl);
+	var panDown = keyboard_check(vk_down) || gamepad_axis_value(0, gp_axisrv) > 0.3 || gamepad_button_check(0, gp_padd);
+	var panUp = keyboard_check(vk_up) || gamepad_axis_value(0, gp_axisrv) < -0.3 || gamepad_button_check(0, gp_padu);
+	var midClickDown = mouse_check_button(mb_middle);
+	
+	hsp = (panRight - panLeft) * panSpeed;
+	vsp = (panDown - panUp) * panSpeed;
+	
+	if (!midClickDown) mousePan = false;
+	if (!mousePan && midClickDown)
+	{
+		mousePan = true;
+		mousePrevX = mouse_x;
+		mousePrevY = mouse_y;
+	}
+	if (mousePan)
+	{
+		hsp = mousePrevX - mouse_x;
+		vsp = mousePrevY - mouse_y;
+	}
+	
+	// Update camera
+	var viewX = camera_get_view_x(view_camera[0]);
+	var viewY = camera_get_view_y(view_camera[0]);
+	var viewWidth = camera_get_view_width(view_camera[0]);
+	var viewHeight = camera_get_view_height(view_camera[0]);
+	
+	camera_set_view_pos(view_camera[0], clamp(viewX + hsp, 0, room_width - viewWidth), clamp(viewY + vsp, 0, room_height - viewHeight));
+	
+	
+	// EDIT MODE
 	if (editMode)
 	{	
 		var cursorX = mouse_x;
