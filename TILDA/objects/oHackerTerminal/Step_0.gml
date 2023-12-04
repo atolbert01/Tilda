@@ -17,15 +17,31 @@ if (result == true)
 		scrollOffset = max(0, scrollOffset - 8);
 	}
 	
-	if (ctrlDown && keyboard_check_pressed(ord("H")))
+	if (ctrlDown)
 	{
-		x = startX;
-		y = startY;
+		if (keyboard_check_pressed(ord("H")))
+		{
+			x = startX;
+			y = startY;
 		
-		boundsX1 = x;
-		boundsY1 = y;
-		boundsX2 = x + boundsWidth;
-		boundsY2 = y + boundsHeight;
+			boundsX1 = x;
+			boundsY1 = y;
+			boundsX2 = x + boundsWidth;
+			boundsY2 = y + boundsHeight;
+		}
+		
+		if (keyboard_check_pressed(ord("C")))
+		{
+			if (oHackerMode.editMode)
+			{
+				with (oHackerMode)
+				{
+					exit_edit_mode();
+				}
+				enter_text("^C", debugColor);
+				enter_text("EDIT OFF", debugColor);
+			}
+		}
 	}
 
 	if (keyboard_check_pressed(vk_backspace))

@@ -1,7 +1,6 @@
 if (!drawMe) return;
 
-//draw_rectangle(boundsX1, boundsY1, boundsX2, boundsY2, true);
-//draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
+if (isActive) draw_rectangle(boundsX1, boundsY1, boundsX2, boundsY2, true);
 
 draw_sprite_ext(sprite_index, -1, x, y, image_xscale, image_yscale, 0, c_white, alpha);
 if (label != "") 

@@ -97,6 +97,7 @@ function process_input(input)
 				editMode = true;
 				editState = EDIT_STATE.IDLE;
 			}
+			with(oRegion) visible = true;
 			break;
 		}
 		

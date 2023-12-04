@@ -16,7 +16,7 @@ if (global.hackerMode)
 	instance_activate_object(terminalPanel);
 	terminalPanel.isActive = true;
 	
-	with(oRegion) visible = true;
+	if (editMode) with(oRegion) visible = true;
 }
 else
 {
