@@ -55,6 +55,7 @@ shotTimer = 0;
 
 roomManager = oRoomManager;
 
+useMouse = true;
 mouseAimStartX = 0;
 mouseAimStartY = 0; 
 isMouseAiming = false;

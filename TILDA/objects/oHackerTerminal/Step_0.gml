@@ -32,58 +32,54 @@ if (result == true)
 		
 		if (keyboard_check_pressed(ord("C")))
 		{
-			if (oHackerMode.editMode)
+			if (hackerMode.editMode)
 			{
-				with (oHackerMode)
+				with (hackerMode)
 				{
 					exit_edit_mode();
 				}
-				enter_text("^C", debugColor);
-				enter_text("EDIT OFF", debugColor);
+				enter_text("^C", inactiveColor);
+				enter_text("EDIT MODE OFF", debugColor);
 			}
 		}
 	}
-
-	if (keyboard_check_pressed(vk_backspace))
+	
+	if (!hackerMode.editMode)
 	{
-		value = string_copy(value, 0, string_length(value) - 1);
-	}
-	else if (!ctrlDown && keyboard_check_pressed(vk_anykey))
-	{
-		var enabledKeys = "";
-		if (allowLetters) enabledKeys += enabledLetters;
-		if (allowNumbers) enabledKeys += enabledNumbers;
-		
-		if ((string_count(chr(keyboard_key), enabledKeys)) && string_length(chr(keyboard_key)) == 1)
+		if (keyboard_check_pressed(vk_backspace))
 		{
-			if (string_length(value) < charLimit) 
-				value = string_copy(value, 0, string_length(value)) + chr(keyboard_key);
+			value = string_copy(value, 0, string_length(value) - 1);
 		}
-		
-		if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+		else if (!ctrlDown && keyboard_check_pressed(vk_anykey))
 		{
-			scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+			var enabledKeys = "";
+			if (allowLetters) enabledKeys += enabledLetters;
+			if (allowNumbers) enabledKeys += enabledNumbers;
+		
+			if ((string_count(chr(keyboard_key), enabledKeys)) && string_length(chr(keyboard_key)) == 1)
+			{
+				if (string_length(value) < charLimit) 
+					value = string_copy(value, 0, string_length(value)) + chr(keyboard_key);
+			}
+		
+			if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
+			{
+				scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
+			}
 		}
-	}
-	if (keyboard_check_pressed(vk_enter))
-	{
-		if (activatedFunction != undefined) activatedFunction();
+		if (keyboard_check_pressed(vk_enter))
+		{
+			if (activatedFunction != undefined) activatedFunction();
 		
-		alarm[0] = -1;
-		cursorVisible = false
-		valuePrev = value;
-		value = "";
+			alarm[0] = -1;
+			cursorVisible = false
+			valuePrev = value;
+			value = "";
 		
-		enter_text(valuePrev, inactiveColor);
-		
-		//ds_list_add(textHistory, { text : valuePrev, color : inactiveColor });
-		//cursorRow += 1;
-		//if (cursorRow * breakHeight > (scrollOffset - (breakHeight * 2)) + (boundsY2 - boundsY1)) 
-		//{
-		//	scrollOffset = (breakHeight * cursorRow) - 64; // TODO: got a magic number here to describe the terminal height
-		//}
-		
-		var input = string_trim(valuePrev);
-		if (input != "") process_input(input);
+			enter_text(valuePrev, inactiveColor);
+			var input = string_trim(valuePrev);
+			if (input != "") process_input(input);
+		}
+	
 	}
 }

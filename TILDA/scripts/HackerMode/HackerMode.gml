@@ -76,9 +76,18 @@ function process_input(input)
 	{
 		case "HELP" :
 		{
-			enter_text("COMMON FUNCTIONS", debugColor);
+			enter_text("USEFUL FUNCTIONS", debugColor);
+			enter_text("----------------\n", debugColor);
+			enter_text("CTRL+H - FIND TERM", debugColor);
+			enter_text("\n", debugColor);
+			enter_text("KNOWN COMMANDS", debugColor);
 			enter_text("----------------\n", debugColor);
 			enter_text("CLS - CLEAR SCREEN", debugColor);
+			enter_text("EDIT - PLACE WALLS", debugColor);
+			enter_text("???? - ????", debugColor);
+			enter_text("???? - ????", debugColor);
+			enter_text("???? - ????", debugColor);
+			enter_text("???? - ????", debugColor);
 			break;
 		}
 		case "CLS" :

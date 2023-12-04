@@ -89,6 +89,7 @@ exit_edit_mode = function()
 
 #endregion
 
+player = oPlayer;
 depth = -1000;
 cursorSprite = sCursor;
 terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);

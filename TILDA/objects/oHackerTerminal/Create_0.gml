@@ -58,3 +58,4 @@ terminalSurface = noone;
 
 scrollOffset = 0;
 
+hackerMode = oHackerMode;
