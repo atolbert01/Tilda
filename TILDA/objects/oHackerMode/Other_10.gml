@@ -11,7 +11,7 @@ with(oGameActor)
 if (global.hackerMode)
 {
 	CRT.ShaderOn = true;
-	glitchIntensity = 0.025;
+	//glitchIntensity = 0.025;
 	
 	instance_activate_object(terminalPanel);
 	terminalPanel.isActive = true;
@@ -21,7 +21,7 @@ if (global.hackerMode)
 else
 {
 	CRT.ShaderOn = false;
-	glitchIntensity = 0;
+	//glitchIntensity = 0;
 	terminalPanel.isActive = false;
 	cursorSprite = sCursor;
 	

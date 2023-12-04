@@ -57,6 +57,22 @@ gridWidth = room_width / GRID_SIZE;
 gridHeight = room_height / GRID_SIZE;
 
 padAmount = 8;
+#endregion
+
+player = oPlayer;
+depth = -1000;
+cursorSprite = sCursor;
+terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);
+instance_deactivate_object(terminalPanel);
+hsp = 0;
+vsp = 0;
+panSpeed = 8;
+mousePan = false;
+mousePrevX = 0;
+mousePrevY = 0;
+//glitchIntensity = 0;
+
+#region Functions
 
 deselect = function()
 {
@@ -79,17 +95,9 @@ exit_edit_mode = function()
 	}
 }
 
-#endregion
+//update_glitch_intensity = function()
+//{
+//	glitchIntensity = (100 / player.glitchBudget) * 0.8;
+//}
 
-player = oPlayer;
-depth = -1000;
-cursorSprite = sCursor;
-terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);
-instance_deactivate_object(terminalPanel);
-hsp = 0;
-vsp = 0;
-panSpeed = 8;
-mousePan = false;
-mousePrevX = 0;
-mousePrevY = 0;
-glitchIntensity = 0;
+#endregion

@@ -3,14 +3,19 @@ var toggleHackerMode = keyboard_check_pressed(192) || keyboard_check_pressed(vk_
 
 if (toggleHackerMode) event_user(0);
 
+
+var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
+var enterPressed = keyboard_check_pressed(vk_enter);
+var ePressed = keyboard_check_pressed(ord("E"));
+
+if (ctrlDown && ePressed)
+{
+	show_debug_message(string(glitch_intensity(player)));
+}
+
 if (global.hackerMode)
 {
-	
-	var enterPressed = keyboard_check_pressed(vk_enter);
-	var ePressed = keyboard_check_pressed(ord("E"));
-	
 	// Navigation keys
-	var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
 	var panRight = gamepad_axis_value(0, gp_axisrh) > 0.3 || gamepad_button_check(0, gp_padr);
 	var panLeft = gamepad_axis_value(0, gp_axisrh) < -0.3 || gamepad_button_check(0, gp_padl);
 	var panDown = gamepad_axis_value(0, gp_axisrv) > 0.3 || gamepad_button_check(0, gp_padd);
@@ -48,7 +53,6 @@ if (global.hackerMode)
 	var viewHeight = camera_get_view_height(view_camera[0]);
 	
 	camera_set_view_pos(view_camera[0], clamp(viewX + hsp, 0, room_width - viewWidth), clamp(viewY + vsp, 0, room_height - viewHeight));
-	
 	
 	// EDIT MODE
 	if (editMode)

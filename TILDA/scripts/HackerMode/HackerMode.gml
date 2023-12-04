@@ -232,5 +232,27 @@ function corner_resize_zone(region, corner, padAmount)
 
 function set_glitch_budget(player, amount)
 {
-	player.glitchBudget += amount;
+	player.glitchBudget = clamp(player.glitchBudget + amount, 0, 100);
+}
+
+function glitch_intensity(player)
+{
+	//return min(((100 / player.glitchBudget) - 1) * 0.025, 0.5);
+	var budget = player.glitchBudget;
+	if (budget > 75)
+	{
+		return 0.008;
+	}
+	if (budget < 75 && budget > 50)
+	{
+		return 0.025;
+	}
+	if (budget < 50 && budget > 25)
+	{
+		return 0.05;
+	}
+	if (budget < 25 && budget >= 0)
+	{
+		return 0.08;
+	}
 }
