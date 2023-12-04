@@ -52,3 +52,7 @@ keyShootHeld = false;
 shotInterval = 8;
 
 roomManager = oRoomManager;
+
+mouseAimStartX = 0;
+mouseAimStartY = 0; 
+isMouseAiming = false;

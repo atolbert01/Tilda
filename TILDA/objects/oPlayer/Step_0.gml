@@ -2,7 +2,7 @@
 event_inherited();
 if (!doStep) exit;
 
-var keyAim = keyboard_check(vk_shift) || keyboard_check(ord("C")) || gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
+var keyAim = mouse_check_button(mb_right) || keyboard_check(vk_shift) || keyboard_check(ord("C")) || gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
 
 var keyRight = keyboard_check(vk_right) || keyboard_check(ord("D")) || gamepad_axis_value(0, gp_axislh) > 0.3 || gamepad_button_check(0, gp_padr);
 var keyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_axis_value(0, gp_axislh) < -0.3 || gamepad_button_check(0, gp_padl);
@@ -23,8 +23,8 @@ if (!keyAim)
 	keyJumpReleased |= keyboard_check_released(vk_up);
 }
 
-var keyShoot = keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_face3);
-keyShootHeld = keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
+var keyShoot = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("X")) || gamepad_button_check_pressed(0, gp_face3);
+keyShootHeld = mouse_check_button(mb_left) || keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
 
 
 //var keyShootReleased = keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
@@ -112,23 +112,25 @@ if (move < 0)
 		
 // Set facing direction
 // Default to left and right if no direction held.
-aimDir = facing;
-		
-if ((keyLeft && keyRight) || (keyUp && keyDown)) aimDir = aimDir; // Don't change the aimDir if inputs cancel each other
-else if (keyLeft)
-{
-	aimDir = 180;
-	if (keyUp) aimDir = 135;
-	else if (!grounded && keyDown) aimDir = 225;
-}
-else if (keyRight)
-{
-	aimDir = 0;
-	if (keyUp) aimDir = 45;
-	else if (!grounded && keyDown) aimDir = 315;
-}
-else if (keyUp) aimDir = 90;
-else if (!grounded && keyDown) aimDir = 270;
+//aimDir = facing;
+
+aimDir = point_direction (hackerStone.x, hackerStone.y, mouse_x, mouse_y);
+
+//if ((keyLeft && keyRight) || (keyUp && keyDown)) aimDir = aimDir; // Don't change the aimDir if inputs cancel each other
+//else if (keyLeft)
+//{
+//	aimDir = 180;
+//	if (keyUp) aimDir = 135;
+//	else if (!grounded && keyDown) aimDir = 225;
+//}
+//else if (keyRight)
+//{
+//	aimDir = 0;
+//	if (keyUp) aimDir = 45;
+//	else if (!grounded && keyDown) aimDir = 315;
+//}
+//else if (keyUp) aimDir = 90;
+//else if (!grounded && keyDown) aimDir = 270;
 
 // Horizontal Collisions
 if (place_meeting(x + hsp, y, oWall))
@@ -242,18 +244,43 @@ var viewWidth = camera_get_view_width(view_camera[0]);
 var viewHeight = camera_get_view_height(view_camera[0]);
 var lerpX = 0.1;
 var lerpY = 0.1;
-
 var goToX = x - (viewWidth * 0.5);
-goToX = x + ((keyRight - keyLeft) * 150) - (viewWidth * 0.5);
-lerpX = 0.025;
-
 var goToY = y - (viewHeight * 0.5);
-if (isPlanted) 
-{
-	goToY = y + ((keyDown - keyUp) * 150) - (viewHeight * 0.5);
-	lerpY = 0.05;
-}
 
+// Mouse aim stuff
+if (!isMouseAiming && mouse_check_button(mb_right))
+{
+	isMouseAiming = true;
+	mouseAimStartX = mouse_x;
+	mouseAimStartY = mouse_y;
+}
+else if (isMouseAiming && mouse_check_button(mb_right))
+{
+	var deltaX = clamp(mouse_x - mouseAimStartX, -1, 1);
+	var deltaY = clamp(mouse_y - mouseAimStartY, -1, 1);
+	
+	goToX = x + ((deltaX) * 150) - (viewWidth * 0.5);
+	lerpX = 0.025;
+
+	if (isPlanted) 
+	{
+		goToY = y + ((deltaY) * 150) - (viewHeight * 0.5);
+		lerpY = 0.05;
+	}
+}
+else
+{
+	isMouseAiming = false;
+	goToX = x + ((keyRight - keyLeft) * 150) - (viewWidth * 0.5);
+	lerpX = 0.025;
+
+	if (isPlanted) 
+	{
+		goToY = y + ((keyDown - keyUp) * 150) - (viewHeight * 0.5);
+		lerpY = 0.05;
+	}
+
+}
 adjCamX = lerp(viewX, goToX, lerpX);
 adjCamY = lerp(viewY, goToY, lerpY);
 
