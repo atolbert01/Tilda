@@ -88,6 +88,18 @@ function process_input(input)
 			cursorRow = 0;
 			break;
 		}
+		case "EDITMODE" :
+		{
+			enter_text("EDITING...", debugColor);
+			enter_text("CTRL + C TO STOP...", debugColor);
+			with (oHackerMode)
+			{
+				editMode = true;
+				editState = EDIT_STATE.IDLE;
+			}
+			break;
+		}
+		
 		default  :
 		{
 			
@@ -95,4 +107,114 @@ function process_input(input)
 		}
 		
 	}
+}
+
+/// Returns the appropriate EDIT_STATE if the cursor is inside a resize zone. Sets the cursor.
+function cursor_in_resize_zone(cursorX, cursorY, region, padAmount)
+{
+	var resizeZone = edge_resize_zone(region, REGION_EDGE.TOP, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeV;
+		return EDIT_STATE.RESIZE_EDGE_TOP;
+	}
+	
+	resizeZone = edge_resize_zone(region, REGION_EDGE.LEFT, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeH;
+		return EDIT_STATE.RESIZE_EDGE_LEFT;
+	}
+	
+	resizeZone = edge_resize_zone(region, REGION_EDGE.BOTTOM, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2))
+	{
+		cursorSprite = sCursor_ResizeV;
+		return EDIT_STATE.RESIZE_EDGE_BOTTOM;
+	}
+	
+	resizeZone = edge_resize_zone(region, REGION_EDGE.RIGHT, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeH;
+		return EDIT_STATE.RESIZE_EDGE_RIGHT;
+	}
+	
+	resizeZone = corner_resize_zone(region, REGION_CORNER.X1_Y1, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeDiag1;
+		return EDIT_STATE.RESIZE_X1_Y1;
+	}
+	
+	resizeZone = corner_resize_zone(region, REGION_CORNER.X2_Y1, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeDiag2;
+		return EDIT_STATE.RESIZE_X2_Y1;
+	}
+	
+	resizeZone = corner_resize_zone(region, REGION_CORNER.X2_Y2, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeDiag1;
+		return EDIT_STATE.RESIZE_X2_Y2;
+	}
+	
+	resizeZone = corner_resize_zone(region, REGION_CORNER.X1_Y2, padAmount);
+	if (point_in_rectangle(cursorX, cursorY, resizeZone.x1, resizeZone.y1, resizeZone.x2, resizeZone.y2)) 
+	{
+		cursorSprite = sCursor_ResizeDiag2;
+		return EDIT_STATE.RESIZE_X1_Y2;
+	}
+	cursorSprite = sCursor;
+	return -1;
+}
+
+function edge_resize_zone(region, edge, padAmount)
+{
+	switch edge
+	{
+		case REGION_EDGE.TOP :
+		{
+			return {x1 : region.x + padAmount, y1 : region.y - padAmount, x2 : region.x + region.width - padAmount, y2 : region.y + padAmount };
+		}
+		case REGION_EDGE.LEFT :
+		{
+			return {x1 : region.x - padAmount, y1 : region.y + padAmount, x2 : region.x + padAmount, y2 : region.y + region.height - padAmount };
+		}
+		case REGION_EDGE.BOTTOM :
+		{
+			return {x1 : region.x + padAmount, y1 : region.y + region.height - padAmount, x2 : region.x + region.width - padAmount, y2 : region.y + region.height + padAmount };
+		}
+		case REGION_EDGE.RIGHT :
+		{
+			return {x1 : region.x + region.width - padAmount, y1 : region.y + padAmount, x2 : region.x + region.width + padAmount, y2 : region.y + region.height - padAmount };
+		}	
+	}
+	return { x1 : 0, y1 : 0, x2 : 0, y2 : 0 };
+}
+
+function corner_resize_zone(region, corner, padAmount)
+{
+	switch corner
+	{
+		case REGION_CORNER.X1_Y1 :
+		{
+			return { x1 : region.x - padAmount, y1 : region.y - padAmount, x2 : region.x + padAmount, y2 : region.y + padAmount };
+		}
+		case REGION_CORNER.X2_Y1 :
+		{
+			return { x1 : region.x + region.width - padAmount, y1 : region.y - padAmount, x2 : region.x + region.width + padAmount, y2 : region.y + padAmount };
+		}
+		case REGION_CORNER.X2_Y2 :
+		{
+			return { x1 : region.x + region.width - padAmount, y1 : region.y + region.height - padAmount, x2 : region.x + region.width + padAmount, y2 : region.y + region.height + padAmount };
+		}
+		case REGION_CORNER.X1_Y2 :
+		{
+			return { x1 : region.x - padAmount, y1 : region.y + region.height - padAmount, x2 : region.x + padAmount, y2 : region.y + region.height + padAmount };
+		}
+	}
+	return { x1 : 0, y1 : 0, x2 : 0, y2 : 0 };
 }
