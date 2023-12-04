@@ -9,7 +9,7 @@ if (global.hackerMode)
 	{	
 		var cursorX = mouse_x;
 		var cursorY = mouse_y;
-		var legalCoords = cursorX > 0 && cursorX < room_width && cursorY > 0 && cursorY < room_height;
+		var legalCoords = cursorX > 0 && cursorX < room_width && cursorY > 0 && cursorY < room_height && !point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), terminalPanel.boundsX1, terminalPanel.boundsY1, terminalPanel.boundsX2, terminalPanel.boundsY2);
 		var xx = clamp(round(cursorX / GRID_SIZE), 0, gridWidth - 1);
 		var yy = clamp(round(cursorY / GRID_SIZE), 0, gridHeight - 1);
 	
@@ -78,6 +78,30 @@ if (global.hackerMode)
 								var newRegion = instance_create_layer(regionX, regionY, "HackerMode", oRegion);
 								show_debug_message("Region created");
 							}	
+						}
+					}
+					
+					// Delete region if we right clicked on one
+					if (mouse_check_button_pressed(mb_right))
+					{
+						var targetRegion = noone;
+						
+						with (oRegion)
+						{
+							if (point_in_rectangle(cursorX, cursorY, x, y, x + width, y + height))
+							{
+								targetRegion = self;
+							}
+						}
+						if (targetRegion != noone)
+						{
+							instance_destroy(targetRegion);
+						}
+						
+						var wall = instance_position(cursorX, cursorY, oGlitchWall);
+						if (wall != noone)
+						{
+							instance_destroy(wall);
 						}
 					}
 				}
