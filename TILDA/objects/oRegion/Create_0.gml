@@ -14,6 +14,7 @@ apply_edits = function()
 			instance_destroy(overlappingWall);
 	}
 		
-	instance_create_layer(x, y, "Terrain", oGlitchWall, { image_xscale : width / GRID_SIZE, image_yscale : height / GRID_SIZE});
+	// Multiplying x and y by half width/height because the origin of sGlitchTile is in the center. This makes it rotate better.
+	instance_create_layer(x + (width * 0.5), y + (height * 0.5), "Terrain", oGlitchWall, { image_xscale : width / GRID_SIZE, image_yscale : height / GRID_SIZE});
 	instance_destroy(self);
 }

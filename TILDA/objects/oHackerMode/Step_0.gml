@@ -86,6 +86,7 @@ if (global.hackerMode)
 					}
 					
 					set_glitch_budget(player, glitchCost);
+					cursorSprite = sCursor;
 				}
 				
 				if (legalCoords)
@@ -162,6 +163,7 @@ if (global.hackerMode)
 						if (targetRegion != noone)
 						{
 							instance_destroy(targetRegion);
+							cursorSprite = sCursor;
 						}
 						
 						var wall = instance_position(cursorX, cursorY, oGlitchWall);
