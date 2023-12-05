@@ -38,15 +38,20 @@ camZoomFactor = 0.2;
 
 //currentRoomManager = undefined;
 
+hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
+hackerStone.image_speed = 0.4;
+instance_deactivate_object(hackerStone);
+
 shield = instance_create_depth(x, y, -25, oShieldBubble);
-shieldStrength = 100;
+shieldStrength = 0;
 shieldDrain = 1;
 shieldRecovery = 0.75;
 shieldCoolDownInterval = 600;
 shieldCoolDownTimer = 0;
+instance_deactivate_object(oShieldBubble);
 
-hackerStone = instance_create_depth(x, y - 24, -50, oHackerStone);
-hackerStone.image_speed = 0.4;
+hackerMode = oHackerMode;
+
 
 canShoot = true;
 keyShootHeld = false;
@@ -59,4 +64,4 @@ useMouse = true;
 mouseAimStartX = 0;
 mouseAimStartY = 0; 
 isMouseAiming = false;
-glitchBudget = 100;
+glitchBudget = 0;

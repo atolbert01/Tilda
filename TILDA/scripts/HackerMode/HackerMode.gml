@@ -84,7 +84,7 @@ function process_input(input)
 			enter_text("----------------\n", c_white);
 			enter_text("CLS - CLEAR SCREEN", debugColor);
 			enter_text("EDIT - PLACE WALLS", debugColor);
-			enter_text("???? - ????", debugColor);
+			enter_text("RESET - UNDO ALL", debugColor);
 			enter_text("???? - ????", debugColor);
 			enter_text("???? - ????", debugColor);
 			enter_text("???? - ????", debugColor);
@@ -99,9 +99,9 @@ function process_input(input)
 		}
 		case "EDIT" :
 		{
-			enter_text("EDITING...", debugColor);
-			enter_text("ENTER:  APPLY", c_white);
-			enter_text("CTRL+C:  STOP", c_white);
+			enter_text("EDITING...", c_white);
+			enter_text("ENTER:  APPLY", debugColor);
+			enter_text("CTRL+C:  STOP", debugColor);
 			with (oHackerMode)
 			{
 				editMode = true;
@@ -110,7 +110,11 @@ function process_input(input)
 			with(oRegion) visible = true;
 			break;
 		}
-		
+		case "RESET" :
+		{
+			enter_text("ALL HACKS RESET", c_white);
+			reset_hacks(oPlayer);
+		}
 		default  :
 		{
 			
@@ -238,10 +242,11 @@ function set_glitch_budget(player, amount)
 function glitch_intensity(player)
 {
 	//return min(((100 / player.glitchBudget) - 1) * 0.025, 0.5);
+	if (!instance_exists(oHackerStone)) return 0; // Only glitch if we have found the stone
 	var budget = player.glitchBudget;
 	if (budget > 75)
 	{
-		return 0.008;
+		return 0.01;
 	}
 	if (budget < 75 && budget > 50)
 	{
@@ -255,4 +260,30 @@ function glitch_intensity(player)
 	{
 		return 0.08;
 	}
+}
+
+function reset_hacks(player)
+{
+	with (oGlitchWall)
+	{
+		instance_destroy(self);
+	}
+	with (oRegion)
+	{
+		instance_destroy(self);
+	}
+	set_glitch_budget(player, 100);
+}
+
+function activate_hackerstone(player)
+{
+	instance_activate_object(player.hackerStone);
+	player.hackerMode.active = true;
+	player.glitchBudget = 100;
+}
+
+function activate_shield(player)
+{
+	instance_activate_object(player.shield);
+	player.shieldStrength = 100;
 }

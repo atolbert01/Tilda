@@ -2,6 +2,9 @@
 event_inherited();
 if (!doStep) exit;
 
+var f1 = keyboard_check_pressed(vk_f1);
+var f2 = keyboard_check_pressed(vk_f2);
+
 var gpAim = gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
 var keyAim = mouse_check_button(mb_right) || keyboard_check(vk_shift) || keyboard_check(ord("C")) || gpAim;
 
@@ -51,16 +54,14 @@ if (!useMouse && !gpAny && (window_mouse_get_delta_x() != 0 || window_mouse_get_
 	useMouse = true;
 }
 
-//useMouse = !gpAny && (window_mouse_get_delta_x() != 0 || window_mouse_get_delta_y() != 0);
 
-//var keyShootReleased = keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
+if (f1 && !instance_exists(oHackerStone)) activate_hackerstone(self);
+if (f2 && !instance_exists(oShieldBubble)) activate_shield(self);
 
-//var exitGrap = true;
 
 grounded = false;
 		
 var move = keyRight - keyLeft;
-//hsp = move * walkSpeed;
 if (move < 0) hsp = max(-walkSpeed, hsp - accel);
 if (move > 0) hsp = min(walkSpeed, hsp + accel);
 if (move == 0) 
@@ -198,78 +199,85 @@ if (place_meeting(x, y + 1, oWall))
 }
 
 // Move the hackerstone
-var stoneTargetX = x - (12 * sign(image_xscale));
-var stoneTargetY = y - 24;
-hackerStone.x = lerp(hackerStone.x, stoneTargetX, 0.15);
-hackerStone.y = lerp(hackerStone.y, stoneTargetY, 0.15);
-
-
-// Handle the shootin'
-if (canShoot && keyShootHeld)
+if (instance_exists(oHackerStone))
 {
-	// This ?? is like a javascript 'nullish' operator, or a ternary statement in C#. If popping yields undefined, create a new bullet
-	var bullet = ds_stack_pop(roomManager.playerBullets) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet);
+	var stoneTargetX = x - (12 * sign(image_xscale));
+	var stoneTargetY = y - 24;
+	hackerStone.x = lerp(hackerStone.x, stoneTargetX, 0.15);
+	hackerStone.y = lerp(hackerStone.y, stoneTargetY, 0.15);
+
+
+	// Handle the shootin'
+	if (canShoot && keyShootHeld)
+	{
+		// This ?? is like a javascript 'nullish' operator, or a ternary statement in C#. If popping yields undefined, create a new bullet
+		var bullet = ds_stack_pop(roomManager.playerBullets) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet);
 	
-	with (bullet)
-	{ 
-		instance_activate_object(self);
-		visible = true;
-		x = other.hackerStone.x;
-		y = other.hackerStone.y;
-		roomManager = other.roomManager;
-		spd = 8;
-		dir = other.aimDir;
-	}
-	canShoot = false;
-	shotTimer = shotInterval;
-	shieldStrength = max(0, shieldStrength - shieldDrain);
-}
-
-if (!canShoot)
-{
-	if (shotTimer > 0) shotTimer -= 1;
-	else canShoot = true;
-}
-
-if (!keyShootHeld)
-{
-	if (!shield.coolDown)
-	{
-		shieldStrength = min(100, shieldStrength + shieldRecovery);
-	}
-}
-
-
-if (!shield.coolDown && shieldStrength <= 0) 
-{
-	shield.coolDown = true;
-	shield.visible = false;
-	shieldCoolDownTimer = shieldCoolDownInterval;
-}
-if (shield.coolDown)
-{
-	if (keyShootHeld)
-	{
-		shield.coolDown = true;
-		shield.visible = false;
-		shieldCoolDownTimer = shieldCoolDownInterval;
-	}
-	else if (shieldCoolDownTimer > 0)
-	{
-		shieldCoolDownTimer -= 1;
-	}
-	else
-	{
-		if (!keyShootHeld) 
-		{
-			with (shield) event_user(0);
+		with (bullet)
+		{ 
+			instance_activate_object(self);
+			visible = true;
+			x = other.hackerStone.x;
+			y = other.hackerStone.y;
+			roomManager = other.roomManager;
+			spd = 8;
+			dir = other.aimDir;
 		}
+		canShoot = false;
+		shotTimer = shotInterval;
+		shieldStrength = max(0, shieldStrength - shieldDrain);
+	}
+
+	if (!canShoot)
+	{
+		if (shotTimer > 0) shotTimer -= 1;
+		else canShoot = true;
+	}
+
+	if (instance_exists(oShieldBubble))
+	{
+		if (!keyShootHeld)
+		{
+			if (!shield.coolDown)
+			{
+				shieldStrength = min(100, shieldStrength + shieldRecovery);
+			}
+		}
+
+
+		if (!shield.coolDown && shieldStrength <= 0) 
+		{
+			shield.coolDown = true;
+			shield.visible = false;
+			shieldCoolDownTimer = shieldCoolDownInterval;
+		}
+		if (shield.coolDown)
+		{
+			if (keyShootHeld)
+			{
+				shield.coolDown = true;
+				shield.visible = false;
+				shieldCoolDownTimer = shieldCoolDownInterval;
+			}
+			else if (shieldCoolDownTimer > 0)
+			{
+				shieldCoolDownTimer -= 1;
+			}
+			else
+			{
+				if (!keyShootHeld) 
+				{
+					with (shield) event_user(0);
+				}
+			}
+		}
+
+		// Handle the shield
+		shield.x = x;
+		shield.y = y;
 	}
 }
 
-// Handle the shield
-shield.x = x;
-shield.y = y;
 
 // Update animation state
 if (grounded)

@@ -44,6 +44,7 @@ enum REGION_EDGE
 	RIGHT,  // 4 
 }
 
+active = false;
 editMode = false;
 editState = EDIT_STATE.IDLE;
 grabbedRegion = noone;
