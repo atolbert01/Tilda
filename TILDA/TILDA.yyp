@@ -42,6 +42,7 @@
   "resources": [
     {"id":{"name":"oGlobals","path":"objects/oGlobals/oGlobals.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
+    {"id":{"name":"oCursor","path":"objects/oCursor/oCursor.yy",},},
     {"id":{"name":"oRegion","path":"objects/oRegion/oRegion.yy",},},
     {"id":{"name":"sCursor_ResizeDiag1","path":"sprites/sCursor_ResizeDiag1/sCursor_ResizeDiag1.yy",},},
     {"id":{"name":"sPlayerRun","path":"sprites/sPlayerRun/sPlayerRun.yy",},},

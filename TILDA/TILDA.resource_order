@@ -22,6 +22,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"oGlobals","order":7,"path":"objects/oGlobals/oGlobals.yy",},
+    {"name":"oCursor","order":17,"path":"objects/oCursor/oCursor.yy",},
     {"name":"oRegion","order":15,"path":"objects/oRegion/oRegion.yy",},
     {"name":"sCursor_ResizeDiag1","order":8,"path":"sprites/sCursor_ResizeDiag1/sCursor_ResizeDiag1.yy",},
     {"name":"sPlayerRun","order":1,"path":"sprites/sPlayerRun/sPlayerRun.yy",},

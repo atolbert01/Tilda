@@ -39,13 +39,13 @@ if (global.hackerMode)
 	if (!mousePan && midClickDown)
 	{
 		mousePan = true;
-		mousePrevX = mouse_x;
-		mousePrevY = mouse_y;
+		mousePrevX = cursor.x;
+		mousePrevY = cursor.y;
 	}
 	if (mousePan)
 	{
-		hsp = mousePrevX - mouse_x;
-		vsp = mousePrevY - mouse_y;
+		hsp = mousePrevX - cursor.x;
+		vsp = mousePrevY - cursor.y;
 	}
 	
 	// Update camera
@@ -59,8 +59,8 @@ if (global.hackerMode)
 	// EDIT MODE
 	if (editMode)
 	{	
-		var cursorX = mouse_x;
-		var cursorY = mouse_y;
+		var cursorX = cursor.x;
+		var cursorY = cursor.y;
 		var legalCoords = cursorX > 0 && cursorX < room_width && cursorY > 0 && cursorY < room_height && !point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), terminalPanel.boundsX1, terminalPanel.boundsY1, terminalPanel.boundsX2, terminalPanel.boundsY2);
 		var xx = clamp(round(cursorX / GRID_SIZE), 0, gridWidth - 1);
 		var yy = clamp(round(cursorY / GRID_SIZE), 0, gridHeight - 1);
@@ -86,7 +86,7 @@ if (global.hackerMode)
 					}
 					
 					set_glitch_budget(player, glitchCost);
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 				}
 				
 				if (legalCoords)
@@ -139,7 +139,7 @@ if (global.hackerMode)
 								grabbedRegion.isSelected = true;
 								grabbedX = xx;
 								grabbedY = yy;
-								cursorSprite = sCursor_Mover;
+								cursor.sprite_index = sCursor_Mover;
 							}
 							else // Place a new region
 							{
@@ -163,7 +163,7 @@ if (global.hackerMode)
 						if (targetRegion != noone)
 						{
 							instance_destroy(targetRegion);
-							cursorSprite = sCursor;
+							cursor.sprite_index = sCursor;
 						}
 						
 						var wall = instance_position(cursorX, cursorY, oGlitchWall);
@@ -181,7 +181,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -201,7 +201,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -225,7 +225,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 					
 				}
@@ -250,7 +250,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -273,7 +273,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -296,7 +296,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 					
 				}
@@ -333,7 +333,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -367,7 +367,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else
@@ -400,7 +400,7 @@ if (global.hackerMode)
 				{
 					grabbedRegion.isSelected = false;
 					grabbedRegion = noone;
-					cursorSprite = sCursor;
+					cursor.sprite_index = sCursor;
 					editState = EDIT_STATE.IDLE;
 				}
 				else

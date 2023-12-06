@@ -140,7 +140,7 @@ if (move < 0)
 
 if (useMouse) 
 {
-	aimDir = point_direction (hackerStone.x, hackerStone.y, mouse_x, mouse_y);
+	aimDir = point_direction (hackerStone.x, hackerStone.y, oCursor.x, oCursor.y);
 }
 else
 {
@@ -313,13 +313,13 @@ var goToY = y - (viewHeight * 0.5);
 if (useMouse && !isMouseAiming && mouse_check_button(mb_right))
 {
 	isMouseAiming = true;
-	mouseAimStartX = mouse_x;
-	mouseAimStartY = mouse_y;
+	mouseAimStartX = oCursor.x;
+	mouseAimStartY = oCursor.y;
 }
 else if (isMouseAiming && mouse_check_button(mb_right))
 {
-	var deltaX = clamp(mouse_x - mouseAimStartX, -1, 1);
-	var deltaY = clamp(mouse_y - mouseAimStartY, -1, 1);
+	var deltaX = clamp(oCursor.x - mouseAimStartX, -1, 1);
+	var deltaY = clamp(oCursor.y - mouseAimStartY, -1, 1);
 	
 	goToX = x + ((deltaX) * 150) - (viewWidth * 0.5);
 	lerpX = 0.025;

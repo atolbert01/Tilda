@@ -23,7 +23,7 @@ else
 	CRT.ShaderOn = false;
 	//glitchIntensity = 0;
 	terminalPanel.isActive = false;
-	cursorSprite = sCursor;
+	cursor.sprite_index = sCursor;
 	
 	with(oRegion)
 	{

@@ -14,6 +14,9 @@ view_camera[0] = camera_create_view(0,0, view_wport[0], view_hport[0], 0, noone,
 
 camWidth = camera_get_view_width(view_camera[0]);
 camHeight = camera_get_view_height(view_camera[0]);
+
+display_set_gui_size(camWidth, camHeight);
+
 camWindowScale = 2;
 var xPos = (display_get_width() * 0.5) - (camWidth * 0.5);
 var yPos = (display_get_height() * 0.5) - (camHeight * 0.5);

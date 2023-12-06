@@ -62,7 +62,8 @@ padAmount = 8;
 
 player = oPlayer;
 depth = -1000;
-cursorSprite = sCursor;
+//cursor = instance_create_depth(0, 0, -10000, oCursor);
+cursor = instance_create_layer(0, 0, "HackerMode", oCursor);
 terminalPanel = instance_create_layer(24, 164, "HackerMode", oHackerTerminal);
 instance_deactivate_object(terminalPanel);
 hsp = 0;
