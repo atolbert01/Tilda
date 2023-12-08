@@ -27,6 +27,11 @@ facing = right;
 isPlanted = false;
 isShooting = false;
 
+center_y = function()
+{
+	return y - (height * 0.5);
+}
+
 accel = 1.0;
 decel = 1.0;
 
