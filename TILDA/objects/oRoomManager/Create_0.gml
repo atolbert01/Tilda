@@ -1,2 +1,2 @@
-playerBullets = ds_stack_create();
-enemyBullets = ds_stack_create();
+bullet1Pool = ds_stack_create();
+bullet2Pool = ds_stack_create();

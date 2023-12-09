@@ -1,85 +1,94 @@
 if (!doStep) exit;
 
-if (shotTimer < 0)
+hsp = 0;
+if (instance_place(x, y, oBullet))
 {
-	// Facing right
-	if (facing == 0)
+	hit = true;
+	hsp = 0;
+}
+else 
+{
+	if (shotTimer < 0)
 	{
-		// Am I on the ground?
-		if (place_meeting(x, y + 1, oWall)) 
+		// Facing right
+		if (facing == 0)
 		{
-			hsp = walkSpeed;
-			if (place_meeting(bbox_right, y + 1, oWall) && !place_meeting(bbox_right + hsp, y - 1, oWall))
+			// Am I on the ground?
+			if (place_meeting(x, y + 1, oWall)) 
 			{
-				image_xscale = 1;
-			}
-			else
-			{
-				facing = 180;
-				hsp = -walkSpeed;
-			}
-		
-			if (coolDownTimer < 0)
-			{
-				if (facing == 0 && player.x > x && distance_to_point(player.x, player.y) < 160)
+				hsp = walkSpeed;
+				if (place_meeting(bbox_right, y + 1, oWall) && !place_meeting(bbox_right + hsp, y - 1, oWall))
 				{
-					var x1 = x;
-					var y1 = y - eyeLevel;
-					var x2 = player.x;
-					var y2 = player.y - ((player.bbox_bottom - player.bbox_top) * 0.5);
-					var col = collision_line_first(x1, y1, x2, y2, [oWall, oPlayer], false, true);
-					if (col.id == player.id)
+					image_xscale = 1;
+				}
+				else
+				{
+					facing = 180;
+					hsp = -walkSpeed;
+				}
+		
+				if (coolDownTimer < 0)
+				{
+					if (facing == 0 && player.x > x && distance_to_point(player.x, player.y) < 160)
 					{
-						show_debug_message("Player");
-						hsp = 0;
-						shotTimer = aimTime;
+						var x1 = x;
+						var y1 = y - eyeLevel;
+						var x2 = player.x;
+						var y2 = player.y - ((player.bbox_bottom - player.bbox_top) * 0.5);
+						var col = collision_line_first(x1, y1, x2, y2, [oWall, oPlayer], false, true);
+						if (col.id == player.id)
+						{
+							hsp = 0;
+							shotTimer = aimTime;
+						}
 					}
 				}
 			}
 		}
+		else
+		{
+			if (place_meeting(x, y + 1, oWall)) 
+			{
+				hsp = -walkSpeed;
+				if (place_meeting(bbox_left, y + 1, oWall) && !place_meeting(bbox_left + hsp, y - 1, oWall))
+				{
+					image_xscale = -1;
+				}
+				else
+				{
+					facing = 0;
+					hsp = walkSpeed;
+				}
+			
+				if (coolDownTimer < 0)
+				{
+					if (facing == 180 && player.x < x && distance_to_point(player.x, player.y) < 160)
+					{
+						var x1 = x;
+						var y1 = y - eyeLevel;
+						var x2 = player.x;
+						var y2 = player.y - ((player.bbox_bottom - player.bbox_top) * 0.5);
+						var col = collision_line_first(x1, y1, x2, y2, [oWall, oPlayer], false, true);
+						if (col.id == player.id)
+						{
+							hsp = 0;
+							shotTimer = aimTime;
+						}
+					}
+				}
+			}
+		}
+		coolDownTimer--;
 	}
 	else
 	{
-		if (place_meeting(x, y + 1, oWall)) 
+		shotTimer--;
+		if (shotTimer < 0)
 		{
-			hsp = -walkSpeed;
-			if (place_meeting(bbox_left, y + 1, oWall) && !place_meeting(bbox_left + hsp, y - 1, oWall))
-			{
-				image_xscale = -1;
-			}
-			else
-			{
-				facing = 0;
-				hsp = walkSpeed;
-			}
-			
-			if (coolDownTimer < 0)
-			{
-				if (facing == 180 && player.x < x && distance_to_point(player.x, player.y) < 160)
-				{
-					var x1 = x;
-					var y1 = y - eyeLevel;
-					var x2 = player.x;
-					var y2 = player.y - ((player.bbox_bottom - player.bbox_top) * 0.5);
-					var col = collision_line_first(x1, y1, x2, y2, [oWall, oPlayer], false, true);
-					if (col.id == player.id)
-					{
-						hsp = 0;
-						shotTimer = aimTime;
-					}
-				}
-			}
+			shoot_bullet();
 		}
 	}
-	x += hsp;
-	coolDownTimer--;
+	
+}
 
-}
-else
-{
-	shotTimer--;
-	if (shotTimer < 0)
-	{
-		shoot_bullet();
-	}
-}
+x += hsp;

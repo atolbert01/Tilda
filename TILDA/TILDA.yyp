@@ -67,6 +67,7 @@
     {"id":{"name":"SHD_CRT","path":"shaders/SHD_CRT/SHD_CRT.yy",},},
     {"id":{"name":"oGlitchWall","path":"objects/oGlitchWall/oGlitchWall.yy",},},
     {"id":{"name":"CRTParms","path":"scripts/CRTParms/CRTParms.yy",},},
+    {"id":{"name":"shdFlash","path":"shaders/shdFlash/shdFlash.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"sCursor_ResizeV","path":"sprites/sCursor_ResizeV/sCursor_ResizeV.yy",},},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},

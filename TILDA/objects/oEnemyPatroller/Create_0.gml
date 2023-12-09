@@ -15,10 +15,12 @@ aimDir = 0;
 coolDownPeriod = 200;
 coolDownTimer = coolDownPeriod;
 
+hit = false;
+
 shoot_bullet = function()
 {
 	aimDir = point_direction(x, y - gunLevel, player.x, player.center_y());
-	var bullet = ds_stack_pop(roomManager.enemyBullets) ?? instance_create_depth(x, y - gunLevel, -100, oBullet2);
+	var bullet = ds_stack_pop(roomManager.bullet2Pool) ?? instance_create_depth(x, y - gunLevel, -100, oBullet2);
 
 	with (bullet)
 	{ 

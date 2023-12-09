@@ -43,6 +43,7 @@
     {"name":"oGameManager","order":14,"path":"objects/oGameManager/oGameManager.yy",},
     {"name":"SHD_CRT","order":1,"path":"shaders/SHD_CRT/SHD_CRT.yy",},
     {"name":"oGlitchWall","order":13,"path":"objects/oGlitchWall/oGlitchWall.yy",},
+    {"name":"shdFlash","order":2,"path":"shaders/shdFlash/shdFlash.yy",},
     {"name":"oCamera","order":2,"path":"objects/oCamera/oCamera.yy",},
     {"name":"sCursor_ResizeV","order":4,"path":"sprites/sCursor_ResizeV/sCursor_ResizeV.yy",},
     {"name":"oWall","order":1,"path":"objects/oWall/oWall.yy",},
