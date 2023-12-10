@@ -12,6 +12,8 @@ shotTimer = -1;
 aimTime = 15;
 aimDir = 0;
 
+health = 10;
+
 coolDownPeriod = 200;
 coolDownTimer = coolDownPeriod;
 
@@ -33,4 +35,9 @@ shoot_bullet = function()
 		dir = other.aimDir;
 	}
 	coolDownTimer = coolDownPeriod;
+}
+
+die = function()
+{
+	instance_destroy(self);
 }

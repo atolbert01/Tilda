@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oBullet",
+  "name": "oBullet1",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
@@ -13,8 +13,8 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": {
-    "name": "oGameActor",
-    "path": "objects/oGameActor/oGameActor.yy",
+    "name": "oBullet",
+    "path": "objects/oBullet/oBullet.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -31,7 +31,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "sBullet1",
+    "path": "sprites/sBullet1/sBullet1.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

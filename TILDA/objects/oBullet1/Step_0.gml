@@ -1,7 +1,7 @@
 event_inherited();
-
 if (!doStep) exit;
 
+////motion_set(dir, spd);
 //x += spd * cos(degtorad(dir));
 //y += spd * sin(-degtorad(dir));
 
@@ -12,7 +12,7 @@ if (!doStep) exit;
 //	y = 1;
 //	visible = false;
 //	instance_deactivate_object(self);
-//	ds_stack_push(roomManager.bullet2Pool, self);
+//	ds_stack_push(roomManager.bullet1Pool, self);
 	
 //	//show_debug_message("Bullets in pool: " + string(ds_stack_size(roomManager.bullet1Pool)));
 //}

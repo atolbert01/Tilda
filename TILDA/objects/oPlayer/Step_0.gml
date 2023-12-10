@@ -211,7 +211,7 @@ if (instance_exists(oHackerStone))
 	if (canShoot && keyShootHeld)
 	{
 		// This ?? is like a javascript 'nullish' operator, or a ternary statement in C#. If popping yields undefined, create a new bullet
-		var bullet = ds_stack_pop(roomManager.bullet1Pool) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet);
+		var bullet = ds_stack_pop(roomManager.bullet1Pool) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet1);
 	
 		with (bullet)
 		{ 
@@ -222,6 +222,7 @@ if (instance_exists(oHackerStone))
 			roomManager = other.roomManager;
 			spd = 8;
 			dir = other.aimDir;
+			isPlayerOwned = true;
 		}
 		canShoot = false;
 		shotTimer = shotInterval;

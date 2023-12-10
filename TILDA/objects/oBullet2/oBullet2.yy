@@ -13,8 +13,8 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": {
-    "name": "oGameActor",
-    "path": "objects/oGameActor/oGameActor.yy",
+    "name": "oBullet",
+    "path": "objects/oBullet/oBullet.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
