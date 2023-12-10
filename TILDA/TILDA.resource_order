@@ -58,6 +58,7 @@
     {"name":"oBullet2","order":19,"path":"objects/oBullet2/oBullet2.yy",},
     {"name":"SPlayerShootIdle","order":7,"path":"sprites/SPlayerShootIdle/SPlayerShootIdle.yy",},
     {"name":"sHackerTerminal","order":2,"path":"sprites/sHackerTerminal/sHackerTerminal.yy",},
+    {"name":"oCheckpointPlaceholder","order":21,"path":"objects/oCheckpointPlaceholder/oCheckpointPlaceholder.yy",},
     {"name":"oHackerMode","order":6,"path":"objects/oHackerMode/oHackerMode.yy",},
     {"name":"sCheckpointIdle","order":16,"path":"sprites/sCheckpointIdle/sCheckpointIdle.yy",},
     {"name":"sGlitchTile","order":15,"path":"sprites/sGlitchTile/sGlitchTile.yy",},

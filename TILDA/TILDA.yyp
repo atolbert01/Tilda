@@ -83,6 +83,7 @@
     {"id":{"name":"oBullet2","path":"objects/oBullet2/oBullet2.yy",},},
     {"id":{"name":"SPlayerShootIdle","path":"sprites/SPlayerShootIdle/SPlayerShootIdle.yy",},},
     {"id":{"name":"sHackerTerminal","path":"sprites/sHackerTerminal/sHackerTerminal.yy",},},
+    {"id":{"name":"oCheckpointPlaceholder","path":"objects/oCheckpointPlaceholder/oCheckpointPlaceholder.yy",},},
     {"id":{"name":"oHackerMode","path":"objects/oHackerMode/oHackerMode.yy",},},
     {"id":{"name":"sCheckpointIdle","path":"sprites/sCheckpointIdle/sCheckpointIdle.yy",},},
     {"id":{"name":"sPlayerIdle","path":"sprites/sPlayerIdle/sPlayerIdle.yy",},},
