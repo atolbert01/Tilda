@@ -14,9 +14,17 @@ if (global.hackerMode)
 
 gpu_set_blendenable(false);
 
-var scaleFactor = window_get_height() / 288; // Need better than magic number here
+//var scaleFactor = window_get_height() / 288; // Need better than magic number here
+var scaleFactor = window_get_width() / 512; // Need better than magic number here
+var remainder = scaleFactor % 1;
+//scaleFactor -= (scaleFactor % 0.25);
+var yOffset = (remainder / 2) * 288;
 
-draw_surface_ext(application_surface, 0, 0, scaleFactor, scaleFactor, 0, c_white, 1);
+//show_debug_message(string(scaleFactor));
+
+
+//draw_surface_ext(application_surface, 0, 0, scaleFactor, scaleFactor, 0, c_white, 1);
+draw_surface_ext(application_surface, 0, yOffset, scaleFactor, scaleFactor, 0, c_white, 1);
 gpu_set_blendenable(true);
 
 shader_reset();

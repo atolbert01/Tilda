@@ -355,9 +355,9 @@ if (camZoom > 1)
 
 
 if (roomBounds != noone)
-{
+{	
 	var lerpHeight = lerp(viewHeight, camZoom * oCamera.camHeight, camZoomFactor);
-	var newHeight = clamp(lerpHeight, roomBounds.y, roomBounds.y + roomBounds.height);
+	var newHeight = clamp(lerpHeight, 0, room_height);
 	var newWidth = newHeight * (oCamera.camWidth / oCamera.camHeight);
 	camera_set_view_size(view_camera[0], round(newWidth), round(newHeight));
 
