@@ -1,7 +1,4 @@
 doQuickSave = false;
+tagString = dec_to_hex(tag, 4)
 gameManager = oGameManager;
-//tag = dec_to_hex(instance_number(oCheckpoint), 4);
-
-tag = gameManager.add_checkpoint(self);
-
-show_debug_message(tag);
+gameManager.add_checkpoint(self);

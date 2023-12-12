@@ -1,0 +1,1 @@
+if (roomBounds != other) roomBounds = other;

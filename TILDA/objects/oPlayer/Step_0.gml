@@ -353,14 +353,32 @@ if (camZoom > 1)
 	camZoom = lerp(camZoom, 1, camZoomFactor);
 }
 
-var lerpHeight = lerp(viewHeight, camZoom * oCamera.camHeight, camZoomFactor);
-var newHeight = clamp(lerpHeight, 0, room_height);
-var newWidth = newHeight * (oCamera.camWidth / oCamera.camHeight);
-camera_set_view_size(view_camera[0], round(newWidth), round(newHeight));
 
-var offsetX = adjCamX - (newWidth - viewWidth) * 0.5;
-var offsetY = adjCamY - (newHeight - viewHeight) * 0.5;
-adjCamX = clamp(offsetX, 0, room_width - newWidth);
-adjCamY = clamp(offsetY, 0, room_height - newHeight);
+if (roomBounds != noone)
+{
+	var lerpHeight = lerp(viewHeight, camZoom * oCamera.camHeight, camZoomFactor);
+	var newHeight = clamp(lerpHeight, roomBounds.y, roomBounds.y + roomBounds.height);
+	var newWidth = newHeight * (oCamera.camWidth / oCamera.camHeight);
+	camera_set_view_size(view_camera[0], round(newWidth), round(newHeight));
+
+	var offsetX = adjCamX - (newWidth - viewWidth) * 0.5;
+	var offsetY = adjCamY - (newHeight - viewHeight) * 0.5;
+	
+	adjCamX = clamp(offsetX, roomBounds.x, (roomBounds.x + roomBounds.width) - newWidth);
+	adjCamY = clamp(offsetY, roomBounds.y, (roomBounds.y + roomBounds.height) - newHeight);
+}
+else
+{
+	var lerpHeight = lerp(viewHeight, camZoom * oCamera.camHeight, camZoomFactor);
+	var newHeight = clamp(lerpHeight, 0, room_height);
+	var newWidth = newHeight * (oCamera.camWidth / oCamera.camHeight);
+	camera_set_view_size(view_camera[0], round(newWidth), round(newHeight));
+
+	var offsetX = adjCamX - (newWidth - viewWidth) * 0.5;
+	var offsetY = adjCamY - (newHeight - viewHeight) * 0.5;
+	
+	adjCamX = clamp(offsetX, 0, room_width - newWidth);
+	adjCamY = clamp(offsetY, 0, room_height - newHeight);
+}
 
 camera_set_view_pos(view_camera[0], round(adjCamX), round(adjCamY));

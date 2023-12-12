@@ -8,12 +8,18 @@ checkpoints = ds_map_create();
 /// @description: Adds a checkpoint to the map. Creates a unique tag for the checkpoint and saves the checkpoint as a struct with location : room, reference : checkpoint.
 add_checkpoint = function(checkpoint)
 {
-	var tag = dec_to_hex(ds_map_size(checkpoints), 4);
-	ds_map_add(checkpoints, tag, { location: room, reference : checkpoint } );
-	return tag;
+	ds_map_add(checkpoints, checkpoint.tagString, { location: room, reference : checkpoint } );
 }
 
 load_checkpoint = function(tag)
 {
 	
 }
+
+
+//var rm = room;
+//while (room_exists(rm))
+//{
+//	rm = room_next(rm);
+//	var info = room_get_info(rm);
+//}
