@@ -119,6 +119,11 @@ die = function()
 {
 	instance_create_layer(0, 0, "Transition", oFade);
 	with(oBounds) reset_room_bounds();
+	with(oCheckpoint) 
+	{
+		doQuickSave = false;
+		sprite_index = sCheckpointIdle;
+	}
 }
 
 respawn = function()
