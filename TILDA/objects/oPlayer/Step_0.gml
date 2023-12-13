@@ -202,6 +202,7 @@ if (place_meeting(x, y + 1, oWall))
 
 // Check if we got hit
 is_hit();
+
 if (safetyTimer > 0) 
 {
 	safetyTimer--;

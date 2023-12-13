@@ -7,8 +7,9 @@ if (alpha == 1)
 	//else room_restart();
 	//room_restart();
 	
-	if (room_exists(targetRoom)) room_goto(targetRoom);
-	else room_restart();
+	//if (room_exists(targetRoom)) room_goto(targetRoom);
+	//else room_restart();
+	//room_restart();
 	
 	fade = -1;
 }

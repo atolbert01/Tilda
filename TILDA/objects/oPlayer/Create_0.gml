@@ -80,6 +80,8 @@ safetyInterval = 10
 safetyTimer = 0;
 
 hit = false;
+lastCheckpoint = noone;
+
 is_hit = function()
 {
 	if (shieldStrength > 0 || safetyTimer > 0) return false;
@@ -115,5 +117,12 @@ is_hit = function()
 
 die = function()
 {
-	room_restart();
+	doStep = false;
+	instance_create_layer(0, 0, "Transition", oFade);
+	if (lastCheckpoint != noone)
+	{
+		x = lastCheckpoint.x;
+		y = lastCheckpoint.y;
+	}
+	//room_restart();
 }
