@@ -1,4 +1,4 @@
-alpha = clamp(alpha + (fade * 0.05), 0, 1);
+alpha = clamp(alpha + (fade * fadeScalar), 0, 1);
 
 // What to do after the fade
 if (alpha == 1)
@@ -10,6 +10,7 @@ if (alpha == 1)
 	//if (room_exists(targetRoom)) room_goto(targetRoom);
 	//else room_restart();
 	//room_restart();
+	//do_on_fade();
 	
 	fade = -1;
 }

@@ -117,12 +117,26 @@ is_hit = function()
 
 die = function()
 {
-	doStep = false;
 	instance_create_layer(0, 0, "Transition", oFade);
+	with(oBounds) reset_room_bounds();
+}
+
+respawn = function()
+{
+	reset_hacks(self);
+	hitPoints = 100;
+	shieldCoolDownTimer = 0;
+	recoveryTimer = 0;
 	if (lastCheckpoint != noone)
 	{
 		x = lastCheckpoint.x;
 		y = lastCheckpoint.y;
+	}
+	roomBounds = instance_place(x, y, oBounds);
+	if (roomBounds != noone)
+	{
+		roomBounds.active = true;
+		roomBounds.unpause_actors();
 	}
 	//room_restart();
 }
