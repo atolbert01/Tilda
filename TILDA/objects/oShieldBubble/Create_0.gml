@@ -12,11 +12,8 @@ is_hit = function()
 	{
 		bullet.deactivate();
 		hit = true;
-		//hsp = 0;
-		//vsp = 0;
 		player.shieldStrength-=bullet.damage*4;
-		//if (hitPoints <= 0) die();
-		
+		screen_shake(2.5, 0.5, 0.2);
 		return true;
 	}
 	return false;

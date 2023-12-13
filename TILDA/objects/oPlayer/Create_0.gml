@@ -94,6 +94,7 @@ is_hit = function()
 		hitPoints-=bullet.damage;
 		if (hitPoints <= 0) die();
 		safetyTimer = safetyInterval;
+		screen_shake(5, 1, 0.2);
 		return true;
 	}
 	
@@ -106,6 +107,7 @@ is_hit = function()
 		hitPoints-=enemy.damage;
 		if (hitPoints <= 0) die();
 		safetyTimer = safetyInterval;
+		screen_shake(5, 1, 0.2);
 		return true;
 	}
 	return false;
