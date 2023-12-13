@@ -9,7 +9,11 @@ var strength = player.shieldStrength;
 if (!coolDown)
 {
 	visible = true;
-	if (strength > 0)
+	if (is_hit())
+	{
+		player.recoveryTimer = player.recoveryInterval;
+	}
+	else if (strength > 0)
 	{
 		image_speed = (100 / strength) * 0.8;
 		

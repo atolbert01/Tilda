@@ -50,9 +50,11 @@ instance_deactivate_object(hackerStone);
 shield = instance_create_depth(x, y, -25, oShieldBubble);
 shieldStrength = 0;
 shieldDrain = 1;
-shieldRecovery = 0.75;
+shieldRecovery = 0.5;
 shieldCoolDownInterval = 600;
 shieldCoolDownTimer = 0;
+recoveryInterval = 150;
+recoveryTimer = 0;
 instance_deactivate_object(oShieldBubble);
 
 hackerMode = oHackerMode;
@@ -72,3 +74,44 @@ isMouseAiming = false;
 glitchBudget = 0;
 
 roomBounds = noone;
+
+hitPoints = 100;
+safetyInterval = 10
+safetyTimer = 0;
+
+hit = false;
+is_hit = function()
+{
+	if (shieldStrength > 0 || safetyTimer > 0) return false;
+	
+	var bullet = instance_place(x, y, oBullet);
+	if (bullet && !bullet.isPlayerOwned)
+	{
+		bullet.deactivate();
+		hit = true;
+		hsp = 0;
+		//vsp = 0;
+		hitPoints-=bullet.damage;
+		if (hitPoints <= 0) die();
+		safetyTimer = safetyInterval;
+		return true;
+	}
+	
+	var enemy = instance_place(x, y, oEnemy)
+	if (enemy)
+	{
+		hit = true;
+		hsp = 0;
+		//vsp = 0;
+		hitPoints-=enemy.damage;
+		if (hitPoints <= 0) die();
+		safetyTimer = safetyInterval;
+		return true;
+	}
+	return false;
+}
+
+die = function()
+{
+	room_restart();
+}

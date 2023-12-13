@@ -106,6 +106,7 @@
     {"id":{"name":"oHackerStone","path":"objects/oHackerStone/oHackerStone.yy",},},
     {"id":{"name":"sBoundsMarker","path":"sprites/sBoundsMarker/sBoundsMarker.yy",},},
     {"id":{"name":"sPlayerRestart","path":"sprites/sPlayerRestart/sPlayerRestart.yy",},},
+    {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [

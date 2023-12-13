@@ -78,5 +78,6 @@
     {"name":"oHackerStone","order":3,"path":"objects/oHackerStone/oHackerStone.yy",},
     {"name":"sBoundsMarker","order":23,"path":"sprites/sBoundsMarker/sBoundsMarker.yy",},
     {"name":"sPlayerRestart","order":18,"path":"sprites/sPlayerRestart/sPlayerRestart.yy",},
+    {"name":"oEnemy","order":23,"path":"objects/oEnemy/oEnemy.yy",},
   ],
 }

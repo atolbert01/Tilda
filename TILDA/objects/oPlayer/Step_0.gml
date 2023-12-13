@@ -43,6 +43,8 @@ var gpShoot = gamepad_button_check_pressed(0, gp_face3);
 var keyShoot = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("X")) || gpShoot;
 keyShootHeld = mouse_check_button(mb_left) || keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
 
+var keyShootReleased = mouse_check_button_released(mb_left) || keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
+
 var gpAny = gpAim || gpRight || gpLeft || gpDown || gpUp || gpJump || gpJumpHeld || gpJumpReleased || gpShoot;
 if (useMouse && gpAny) 
 {
@@ -198,6 +200,14 @@ if (place_meeting(x, y + 1, oWall))
 	if (keyJump || (keyJumpHeld && jumpHoldTimer < 10)) vsp = jumpForce;
 }
 
+// Check if we got hit
+is_hit();
+if (safetyTimer > 0) 
+{
+	safetyTimer--;
+	hit = true;
+}
+
 // Move the hackerstone
 if (instance_exists(oHackerStone))
 {
@@ -237,11 +247,23 @@ if (instance_exists(oHackerStone))
 
 	if (instance_exists(oShieldBubble))
 	{
+		if (keyShootReleased && !shield.coolDown)
+		{
+			recoveryTimer = recoveryInterval;
+		}
+		
 		if (!keyShootHeld)
 		{
 			if (!shield.coolDown)
 			{
-				shieldStrength = min(100, shieldStrength + shieldRecovery);
+				if (recoveryTimer > 0)
+				{
+					recoveryTimer--;
+				}
+				else 
+				{
+					shieldStrength = min(100, shieldStrength + shieldRecovery);
+				}
 			}
 		}
 

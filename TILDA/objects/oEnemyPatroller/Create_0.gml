@@ -1,11 +1,8 @@
 event_inherited();
 
 facing = 0;
-hsp = 0;
 walkSpeed = 2;
 
-roomManager = oRoomManager;
-player = oPlayer;
 eyeLevel = (bbox_bottom - bbox_top) * 0.66;
 gunLevel = (bbox_bottom - bbox_top) * 0.5;
 shotTimer = -1;
@@ -16,8 +13,6 @@ health = 10;
 
 coolDownPeriod = 200;
 coolDownTimer = coolDownPeriod;
-
-hit = false;
 
 shoot_bullet = function()
 {
@@ -35,9 +30,4 @@ shoot_bullet = function()
 		dir = other.aimDir;
 	}
 	coolDownTimer = coolDownPeriod;
-}
-
-die = function()
-{
-	instance_destroy(self);
 }

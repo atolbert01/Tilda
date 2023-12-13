@@ -2,15 +2,16 @@ if (!doStep) exit;
 
 hsp = 0;
 var bullet = instance_place(x, y, oBullet);
-if (bullet && bullet.isPlayerOwned)
-{
-	bullet.deactivate();
-	hit = true;
-	hsp = 0;
-	health--;
-	if (health <= 0) die();
-}
-else 
+//if (bullet && bullet.isPlayerOwned)
+//{
+//	bullet.deactivate();
+//	hit = true;
+//	hsp = 0;
+//	health--;
+//	if (health <= 0) die();
+//}
+//else 
+if (!is_hit())
 {
 	if (shotTimer < 0)
 	{
