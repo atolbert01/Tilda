@@ -5,3 +5,6 @@
 //rightNeighbors = -1;
 //topNeighbors= -1;
 //bottomNeighbors = -1;
+
+ds_list_destroy(actors);
+actors = -1;
