@@ -27,5 +27,10 @@ is_hit = function()
 die = function()
 {
 	screen_shake(10, 2, 0.4);
+	var roomBounds = instance_place(x, y, oBounds);
+	if (roomBounds)
+	{
+		roomBounds.remove_actor(self);
+	}
 	instance_destroy(self);
 }

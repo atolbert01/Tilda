@@ -51,6 +51,7 @@ textColor = activeColor;
 
 debugColor = 0x36f2fb;
 labelColor = 0x6e9437;
+errorColor = 0x3232ac;
 
 textHistory = ds_list_create();
 

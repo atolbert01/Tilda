@@ -115,6 +115,67 @@ function process_input(input)
 			enter_text("ALL HACKS RESET", c_white);
 			reset_hacks(oPlayer);
 		}
+		case "WARP" :
+		{
+			if (array_length(tokens) < 2)
+			{
+				enter_text("ERROR. USAGE:", errorColor);
+				enter_text("WARP <TAG>", debugColor);
+			}
+			else
+			{
+				var doWarp = false;
+				var warpTag = tokens[1];
+				for (var i = 0; i < instance_number(oCheckpoint); ++i;)
+				{
+					var checkpoint = instance_find(oCheckpoint, i);
+					if (checkpoint.tag == warpTag)
+					{
+						doWarp = true;
+						with (oPlayer)
+						{
+							
+							// Update room bounds. Need to do this before we warp the player
+							var newBounds = instance_place(checkpoint.x, checkpoint.y, oBounds);
+							if (roomBounds != newBounds)
+							{
+								if (roomBounds != noone)
+								{
+									roomBounds.unpause_actors();
+									roomBounds.active = false;
+									roomBounds.deactivate_actors();
+								}
+								roomBounds = newBounds;
+								roomBounds.active = true;
+								roomBounds.activate_actors();
+							}
+							
+							x = checkpoint.x;
+							y = checkpoint.y;
+							hackerStone.x = x;
+							hackerStone.y = y - 24;
+							shield.x = x;
+							shield.y = y;
+							
+							// Update camera
+							var viewWidth = camera_get_view_width(view_camera[0]);
+							var viewHeight = camera_get_view_height(view_camera[0]);
+							var goToX = x - (viewWidth * 0.5);
+							var goToY = y - (viewHeight * 0.5);
+							adjCamX = goToX;
+							adjCamY = goToY;
+							camera_set_view_pos(view_camera[0], round(adjCamX), round(adjCamY));
+							
+							set_glitch_budget(self, -10);
+						}
+					}
+				}
+				if (!doWarp)
+				{
+					enter_text("ERROR. UNKNOWN TAG.", errorColor);
+				}
+			}
+		}
 		default  :
 		{
 			

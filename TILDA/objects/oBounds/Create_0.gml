@@ -6,7 +6,7 @@ actors = ds_list_create();
 startValues = ds_list_create();
 
 // Add additional object types to the object array as needed, e.g. hazards, doors, items, etc.
-hasActors = collision_rectangle_list(x, y, x + width, y + width, [oEnemy], false, true, actors, false);
+hasActors = collision_rectangle_list(x, y, x + width, y + height, [oEnemy], false, true, actors, false);
 deactivate_actors = function()
 {
 	if (hasActors)
@@ -61,7 +61,7 @@ reset_room_bounds = function()
 		inst.doStep = false;
 	}
 	
-	hasActors = collision_rectangle_list(x, y, x + width, y + width, [oEnemy], false, true, actors, false);
+	hasActors = collision_rectangle_list(x, y, x + width, y + height, [oEnemy], false, true, actors, false);
 	active = false;
 }
 
@@ -74,9 +74,16 @@ unpause_actors = function()
 		for (var i = 0; i < numActors; i++)
 		{
 			var actor = actors[| i];
-			actor.doStep = true;
+			if (instance_exists(actor)) actor.doStep = true;
 		}
 	}
+}
+
+remove_actor = function(inst)
+{
+	var i = ds_list_find_index(actors, inst);
+	ds_list_delete(actors, i);
+	if (ds_list_size(actors) < 1) hasActors = false;
 }
 
 if (hasActors) 
