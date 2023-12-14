@@ -58,7 +58,7 @@ reset_room_bounds = function()
 	{
 		var objectData = startValues[| i];
 		var inst = instance_create_layer(objectData.x, objectData.y, objectData.layer, objectData.type);
-		//inst.doStep = false;
+		inst.doStep = false;
 	}
 	
 	hasActors = collision_rectangle_list(x, y, x + width, y + width, [oEnemy], false, true, actors, false);
@@ -68,16 +68,13 @@ reset_room_bounds = function()
 // Step is paused during reset. Unpause actors here.
 unpause_actors = function()
 {
-	if (active)
+	if (hasActors)
 	{
-		if (hasActors)
+		var numActors = ds_list_size(actors);
+		for (var i = 0; i < numActors; i++)
 		{
-			var numActors = ds_list_size(actors);
-			for (var i = 0; i < numActors; i++)
-			{
-				var actor = actors[| i];
-				actor.doStep = true;
-			}
+			var actor = actors[| i];
+			actor.doStep = true;
 		}
 	}
 }

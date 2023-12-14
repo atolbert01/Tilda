@@ -81,6 +81,10 @@ safetyTimer = 0;
 
 hit = false;
 lastCheckpoint = noone;
+disableInput = false;
+respawnTimer = 0;
+respawnInterval = 60;
+isRespawning = false;
 
 is_hit = function()
 {
@@ -117,8 +121,10 @@ is_hit = function()
 
 die = function()
 {
-	instance_create_layer(0, 0, "Transition", oFade);
-	with(oBounds) reset_room_bounds();
+	disableInput = true;
+	doStep = false;
+	instance_create_layer(0, 0, "Transition", oFadeCheckpoint);
+	//with(oBounds) reset_room_bounds();
 	with(oCheckpoint) 
 	{
 		doQuickSave = false;
@@ -137,11 +143,9 @@ respawn = function()
 		x = lastCheckpoint.x;
 		y = lastCheckpoint.y;
 	}
+	with(oBounds) reset_room_bounds();
 	roomBounds = instance_place(x, y, oBounds);
-	if (roomBounds != noone)
-	{
-		roomBounds.active = true;
-		roomBounds.unpause_actors();
-	}
-	//room_restart();
+	doStep = true;
+	isRespawning = true;
+	respawnTimer = respawnInterval;
 }

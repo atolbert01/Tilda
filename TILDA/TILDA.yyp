@@ -51,7 +51,7 @@
     {"id":{"name":"oBounds","path":"objects/oBounds/oBounds.yy",},},
     {"id":{"name":"oGameActor","path":"objects/oGameActor/oGameActor.yy",},},
     {"id":{"name":"sHackerStone","path":"sprites/sHackerStone/sHackerStone.yy",},},
-    {"id":{"name":"oFade","path":"objects/oFade/oFade.yy",},},
+    {"id":{"name":"oFadeCheckpoint","path":"objects/oFadeCheckpoint/oFadeCheckpoint.yy",},},
     {"id":{"name":"sTiles","path":"sprites/sTiles/sTiles.yy",},},
     {"id":{"name":"screen_shake","path":"scripts/screen_shake/screen_shake.yy",},},
     {"id":{"name":"oHackerTerminal","path":"objects/oHackerTerminal/oHackerTerminal.yy",},},

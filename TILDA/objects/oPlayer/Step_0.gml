@@ -1,35 +1,60 @@
 // Inherit the parent event
 event_inherited();
+
 if (!doStep) exit;
+if (isRespawning)
+{
+	if (respawnTimer > 0)
+	{
+		respawnTimer--;
+	}
+	else
+	{
+		isRespawning = false;
+		disableInput = false;
+		if (roomBounds != noone)
+		{
+			roomBounds.active = true;
+		}
+		with (oBounds)
+		{
+			unpause_actors();
+		}
+		with (oFadeCheckpoint)
+		{
+			instance_destroy();
+		}
+	}
+}
 
 var f1 = keyboard_check_pressed(vk_f1);
 var f2 = keyboard_check_pressed(vk_f2);
 
-var gpAim = gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl);
-var keyAim = mouse_check_button(mb_right) || keyboard_check(vk_shift) || keyboard_check(ord("C")) || gpAim;
+var gpAim = !disableInput && (gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl));
+var keyAim = !disableInput && (mouse_check_button(mb_right) || keyboard_check(vk_shift) || keyboard_check(ord("C")) || gpAim);
 
-var gpRight = gamepad_axis_value(0, gp_axislh) > 0.3 || gamepad_button_check(0, gp_padr)
-var keyRight = keyboard_check(vk_right) || keyboard_check(ord("D")) || gpRight;
+var gpRight = !disableInput && (gamepad_axis_value(0, gp_axislh) > 0.3 || gamepad_button_check(0, gp_padr));
+var keyRight = !disableInput && (keyboard_check(vk_right) || keyboard_check(ord("D")) || gpRight);
 
-var gpLeft = gamepad_axis_value(0, gp_axislh) < -0.3 || gamepad_button_check(0, gp_padl);
-var keyLeft = keyboard_check(vk_left) || keyboard_check(ord("A")) || gpLeft;
+var gpLeft = !disableInput && (gamepad_axis_value(0, gp_axislh) < -0.3 || gamepad_button_check(0, gp_padl));
+var keyLeft = !disableInput && (keyboard_check(vk_left) || keyboard_check(ord("A")) || gpLeft);
 
-var gpDown = gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd);
-var keyDown = keyboard_check(vk_down) || keyboard_check(ord("S")) || gpDown;
+var gpDown = !disableInput && (gamepad_axis_value(0, gp_axislv) > 0.3 || gamepad_button_check(0, gp_padd));
+var keyDown = !disableInput && (keyboard_check(vk_down) || keyboard_check(ord("S")) || gpDown);
 
-var gpUp = gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu);
-var keyUp = keyboard_check(ord("W")) || keyboard_check(vk_up) || gpUp;
+var gpUp = !disableInput && (gamepad_axis_value(0, gp_axislv) < -0.3 || gamepad_button_check(0, gp_padu));
+var keyUp = !disableInput && (keyboard_check(ord("W")) || keyboard_check(vk_up) || gpUp);
 
-var gpJump = gamepad_button_check_pressed(0, gp_face1);
-var keyJump = keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z")) || gpJump;
+var gpJump = !disableInput && (gamepad_button_check_pressed(0, gp_face1));
+var keyJump = !disableInput && (keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z")) || gpJump);
 
-var gpJumpHeld = gamepad_button_check(0, gp_face1);
-var keyJumpHeld = keyboard_check(vk_space) || keyboard_check(ord("Z")) || gpJumpHeld;
+var gpJumpHeld = !disableInput && (gamepad_button_check(0, gp_face1));
+var keyJumpHeld = !disableInput && (keyboard_check(vk_space) || keyboard_check(ord("Z")) || gpJumpHeld);
 
-var gpJumpReleased = gamepad_button_check_released(0, gp_face1);
-var keyJumpReleased = keyboard_check_released(vk_space) || keyboard_check_released(ord("Z")) || gpJumpReleased;
+var gpJumpReleased = !disableInput && (gamepad_button_check_released(0, gp_face1));
+var keyJumpReleased = !disableInput && (keyboard_check_released(vk_space) || keyboard_check_released(ord("Z")) || gpJumpReleased);
 
-if (!keyAim)
+if (!disableInput && !keyAim)
 {
 	keyJump |= keyboard_check_pressed(ord("W"));
 	keyJump |= keyboard_check_pressed(vk_up);
@@ -39,13 +64,13 @@ if (!keyAim)
 	keyJumpReleased |= keyboard_check_released(vk_up);
 }
 
-var gpShoot = gamepad_button_check_pressed(0, gp_face3);
-var keyShoot = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("X")) || gpShoot;
-keyShootHeld = mouse_check_button(mb_left) || keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3);
+var gpShoot = !disableInput && (gamepad_button_check_pressed(0, gp_face3));
+var keyShoot = !disableInput && (mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("X")) || gpShoot);
+keyShootHeld = !disableInput && (mouse_check_button(mb_left) || keyboard_check(ord("X")) || gamepad_button_check(0, gp_face3));
 
-var keyShootReleased = mouse_check_button_released(mb_left) || keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3);
+var keyShootReleased = !disableInput && (mouse_check_button_released(mb_left) || keyboard_check_released(ord("X")) || gamepad_button_check_released(0, gp_face3));
 
-var gpAny = gpAim || gpRight || gpLeft || gpDown || gpUp || gpJump || gpJumpHeld || gpJumpReleased || gpShoot;
+var gpAny = !disableInput && (gpAim || gpRight || gpLeft || gpDown || gpUp || gpJump || gpJumpHeld || gpJumpReleased || gpShoot);
 if (useMouse && gpAny) 
 {
 	useMouse = false;

@@ -9,6 +9,11 @@ var strength = player.shieldStrength;
 if (!coolDown)
 {
 	visible = true;
+	if (safetyTimer > 0) 
+	{
+		safetyTimer--;
+		//hit = true;
+	}
 	if (is_hit())
 	{
 		player.recoveryTimer = player.recoveryInterval;
