@@ -15,10 +15,10 @@ if (global.hackerMode)
 gpu_set_blendenable(false);
 
 //var scaleFactor = window_get_height() / 288; // Need better than magic number here
-var scaleFactor = window_get_width() / 512; // Need better than magic number here
-var remainder = scaleFactor % 1;
+scaleFactor = window_get_width() / 512; // Need better than magic number here
+scaleRemainder = scaleFactor % 1;
 //scaleFactor -= (scaleFactor % 0.25);
-var yOffset = (remainder / 2) * 288;
+var yOffset = (scaleRemainder / 2) * 288;
 
 //show_debug_message(string(scaleFactor));
 

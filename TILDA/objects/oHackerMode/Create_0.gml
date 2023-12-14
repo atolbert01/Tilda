@@ -72,6 +72,9 @@ panSpeed = 8;
 mousePan = false;
 mousePrevX = 0;
 mousePrevY = 0;
+
+scaleFactor = 0;
+scaleRemainder = 0;
 //glitchIntensity = 0;
 
 #region Functions

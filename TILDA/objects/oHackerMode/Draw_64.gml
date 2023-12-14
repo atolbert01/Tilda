@@ -1,7 +1,9 @@
-//if (global.hackerMode || player.useMouse)
-//{
-//	draw_sprite_ext(cursor.sprite_index, -1, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 0.67);
-//}
+if (/*global.hackerMode || */player.useMouse)
+{
+	//draw_sprite_ext(cursor.sprite_index, -1, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0) - (scaleRemainder * 0.5), 1, 1, 0, c_white, 0.67);
+	//draw_sprite_ext(cursor.sprite_index, -1, device_mouse_x_to_gui(0), oCamera.y + mouse_y - (scaleRemainder * 0.5), 1, 1, 0, c_white, 0.67);
+	draw_sprite_ext(cursor.sprite_index, -1, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0) - (scaleFactor), 1, 1, 0, c_white, 0.67);
+}
 
 var glitchIntensity = glitch_intensity(player);
 // Do glitch if we have any side effects
