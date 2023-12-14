@@ -90,7 +90,7 @@ if (!is_hit())
 		shotTimer--;
 		if (shotTimer < 0)
 		{
-			shoot_bullet();
+			self.shoot_bullet();
 		}
 	}
 	

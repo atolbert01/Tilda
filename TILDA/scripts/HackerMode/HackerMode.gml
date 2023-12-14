@@ -114,6 +114,7 @@ function process_input(input)
 		{
 			enter_text("ALL HACKS RESET", c_white);
 			reset_hacks(oPlayer);
+			break;
 		}
 		case "WARP" :
 		{
@@ -175,6 +176,7 @@ function process_input(input)
 					enter_text("ERROR. UNKNOWN TAG.", errorColor);
 				}
 			}
+			break;
 		}
 		default  :
 		{

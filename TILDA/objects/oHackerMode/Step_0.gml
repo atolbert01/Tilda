@@ -5,7 +5,6 @@ var toggleHackerMode = keyboard_check_pressed(192) || keyboard_check_pressed(vk_
 
 if (toggleHackerMode) event_user(0);
 
-
 var ctrlDown = keyboard_check(vk_control) | keyboard_check(vk_shift);
 var enterPressed = keyboard_check_pressed(vk_enter);
 var ePressed = keyboard_check_pressed(ord("E"));
@@ -436,7 +435,3 @@ if (global.hackerMode)
 	}
 	
 }
-//else
-//{
-	
-//}

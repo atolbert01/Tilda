@@ -2,6 +2,9 @@ active = false;
 width = bbox_right - bbox_left;
 height = bbox_bottom - bbox_top;
 
+glitchModifier = 12;
+glitchTimer = 100 * glitchModifier;
+
 actors = ds_list_create();
 startValues = ds_list_create();
 
@@ -84,6 +87,16 @@ remove_actor = function(inst)
 	var i = ds_list_find_index(actors, inst);
 	ds_list_delete(actors, i);
 	if (ds_list_size(actors) < 1) hasActors = false;
+}
+
+create_random_instance = function()
+{
+	if (ds_list_size(startValues) < 1) return;
+	var size = ds_list_size(startValues);
+	var choice = irandom_range(0, size - 1);
+	var objectData = startValues[| choice];
+	var inst = instance_create_layer(objectData.x, objectData.y, objectData.layer, objectData.type);
+	//inst.doStep = false;
 }
 
 if (hasActors) 
