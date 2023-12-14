@@ -54,6 +54,11 @@ reset_room_bounds = function()
 		}
 	}
 	
+	with (oGlitchBat)
+	{
+		die();
+	}
+	
 	ds_list_clear(actors);
 	
 	var size = ds_list_size(startValues);
@@ -97,6 +102,16 @@ create_random_instance = function()
 	var objectData = startValues[| choice];
 	var inst = instance_create_layer(objectData.x, objectData.y, objectData.layer, objectData.type);
 	//inst.doStep = false;
+}
+
+spawn_glitch_bat = function()
+{
+	// Spawn near the player
+	var xx = irandom_range(oPlayer.x - 128, oPlayer.x + 128);
+	var yy = irandom_range(oPlayer.y - 128, oPlayer.y + 128);
+	
+	instance_create_layer(xx, yy, "Instances", oGlitchBat);
+	
 }
 
 if (hasActors) 
