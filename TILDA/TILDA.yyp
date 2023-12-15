@@ -37,7 +37,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.0.121",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"oGlitchBat","path":"objects/oGlitchBat/oGlitchBat.yy",},},
@@ -109,6 +109,7 @@
     {"id":{"name":"oHUD","path":"objects/oHUD/oHUD.yy",},},
     {"id":{"name":"oCheckpoint","path":"objects/oCheckpoint/oCheckpoint.yy",},},
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
+    {"id":{"name":"oGlitchGib","path":"objects/oGlitchGib/oGlitchGib.yy",},},
     {"id":{"name":"sPlayerJumpRise","path":"sprites/sPlayerJumpRise/sPlayerJumpRise.yy",},},
     {"id":{"name":"sPlayerShootJump","path":"sprites/sPlayerShootJump/sPlayerShootJump.yy",},},
     {"id":{"name":"oHackerStone","path":"objects/oHackerStone/oHackerStone.yy",},},

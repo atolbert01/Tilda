@@ -81,6 +81,7 @@
     {"name":"sWall","order":4,"path":"sprites/sWall/sWall.yy",},
     {"name":"oHUD","order":12,"path":"objects/oHUD/oHUD.yy",},
     {"name":"oCheckpoint","order":16,"path":"objects/oCheckpoint/oCheckpoint.yy",},
+    {"name":"oGlitchGib","order":29,"path":"objects/oGlitchGib/oGlitchGib.yy",},
     {"name":"sPlayerJumpRise","order":2,"path":"sprites/sPlayerJumpRise/sPlayerJumpRise.yy",},
     {"name":"sPlayerShootJump","order":8,"path":"sprites/sPlayerShootJump/sPlayerShootJump.yy",},
     {"name":"oHackerStone","order":3,"path":"objects/oHackerStone/oHackerStone.yy",},

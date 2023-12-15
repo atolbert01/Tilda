@@ -121,6 +121,7 @@ is_hit = function()
 
 die = function()
 {
+	visible = false;
 	disableInput = true;
 	doStep = false;
 	instance_create_layer(0, 0, "Transition", oFadeCheckpoint);
@@ -130,10 +131,21 @@ die = function()
 		doQuickSave = false;
 		sprite_index = sCheckpointIdle;
 	}
+	
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
+	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
 }
 
 respawn = function()
 {
+	visible = true;
 	reset_hacks(self);
 	hitPoints = 100;
 	shieldCoolDownTimer = 0;
