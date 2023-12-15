@@ -37,7 +37,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.108",
+    "IDEVersion": "2023.11.0.121",
   },
   "resources": [
     {"id":{"name":"oGlitchBat","path":"objects/oGlitchBat/oGlitchBat.yy",},},
@@ -56,6 +56,7 @@
     {"id":{"name":"sTiles","path":"sprites/sTiles/sTiles.yy",},},
     {"id":{"name":"screen_shake","path":"scripts/screen_shake/screen_shake.yy",},},
     {"id":{"name":"oHackerTerminal","path":"objects/oHackerTerminal/oHackerTerminal.yy",},},
+    {"id":{"name":"oEnemyCrawler","path":"objects/oEnemyCrawler/oEnemyCrawler.yy",},},
     {"id":{"name":"shdBktGlitch","path":"shaders/shdBktGlitch/shdBktGlitch.yy",},},
     {"id":{"name":"oScreenShake","path":"objects/oScreenShake/oScreenShake.yy",},},
     {"id":{"name":"bktGlitch","path":"scripts/bktGlitch/bktGlitch.yy",},},
@@ -100,6 +101,7 @@
     {"id":{"name":"sCheckpointQuicksave","path":"sprites/sCheckpointQuicksave/sCheckpointQuicksave.yy",},},
     {"id":{"name":"oGlitchPart","path":"objects/oGlitchPart/oGlitchPart.yy",},},
     {"id":{"name":"db32","path":"sprites/db32/db32.yy",},},
+    {"id":{"name":"sEnemyCrawler","path":"sprites/sEnemyCrawler/sEnemyCrawler.yy",},},
     {"id":{"name":"sPlayerJumpCrest","path":"sprites/sPlayerJumpCrest/sPlayerJumpCrest.yy",},},
     {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},},
     {"id":{"name":"oHUD","path":"objects/oHUD/oHUD.yy",},},

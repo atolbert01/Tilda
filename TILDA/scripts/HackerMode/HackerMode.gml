@@ -85,7 +85,7 @@ function process_input(input)
 			enter_text("CLS - CLEAR SCREEN", debugColor);
 			enter_text("EDIT - PLACE WALLS", debugColor);
 			enter_text("RESET - UNDO ALL", debugColor);
-			enter_text("???? - ????", debugColor);
+			enter_text("WARP - FAST TRAVEL", debugColor);
 			enter_text("???? - ????", debugColor);
 			enter_text("???? - ????", debugColor);
 			break;
