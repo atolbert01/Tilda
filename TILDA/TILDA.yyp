@@ -69,6 +69,7 @@
     {"id":{"name":"sShieldBubble","path":"sprites/sShieldBubble/sShieldBubble.yy",},},
     {"id":{"name":"sCheckpointInactive","path":"sprites/sCheckpointInactive/sCheckpointInactive.yy",},},
     {"id":{"name":"HackerMode","path":"scripts/HackerMode/HackerMode.yy",},},
+    {"id":{"name":"oTitleManager","path":"objects/oTitleManager/oTitleManager.yy",},},
     {"id":{"name":"sCheckpointRestart","path":"sprites/sCheckpointRestart/sCheckpointRestart.yy",},},
     {"id":{"name":"oShieldBubble","path":"objects/oShieldBubble/oShieldBubble.yy",},},
     {"id":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},},
@@ -77,6 +78,7 @@
     {"id":{"name":"CRTParms","path":"scripts/CRTParms/CRTParms.yy",},},
     {"id":{"name":"shdFlash","path":"shaders/shdFlash/shdFlash.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
+    {"id":{"name":"Title","path":"rooms/Title/Title.yy",},},
     {"id":{"name":"sCursor_ResizeV","path":"sprites/sCursor_ResizeV/sCursor_ResizeV.yy",},},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"sHackerOverlay","path":"sprites/sHackerOverlay/sHackerOverlay.yy",},},
@@ -116,6 +118,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [
+    {"roomId":{"name":"Title","path":"rooms/Title/Title.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType": "game",
