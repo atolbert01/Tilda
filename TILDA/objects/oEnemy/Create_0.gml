@@ -19,6 +19,7 @@ is_hit = function()
 		hitPoints-=bullet.damage;
 		if (hitPoints <= 0) die();
 		screen_shake(2, 0.25, 0.2);
+		audio_play_sound(bump, 10, false);
 		return true;
 	}
 	return false;
@@ -27,6 +28,7 @@ is_hit = function()
 die = function()
 {
 	screen_shake(10, 2, 0.4);
+	audio_play_sound(explosion, 10, false);
 	var roomBounds = instance_place(x, y, oBounds);
 	if (roomBounds)
 	{

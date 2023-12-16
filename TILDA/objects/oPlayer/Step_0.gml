@@ -136,6 +136,9 @@ if (isPlanted)
 if (canJump > 0 && keyJump) 
 {
 	vsp = jumpForce;
+	var roll = random_range(1, 6);
+	if (roll < 4) audio_play_sound(jump1, 10, false);
+	else audio_play_sound(jump2, 10, false);
 }
 
 // Are we going up, but have released jump? Then ease off and start descending
@@ -248,7 +251,6 @@ if (instance_exists(oHackerStone))
 	{
 		// This ?? is like a javascript 'nullish' operator, or a ternary statement in C#. If popping yields undefined, create a new bullet
 		var bullet = ds_stack_pop(roomManager.bullet1Pool) ?? instance_create_depth(hackerStone.x, hackerStone.y, -100, oBullet1);
-	
 		with (bullet)
 		{ 
 			instance_activate_object(self);
@@ -260,6 +262,7 @@ if (instance_exists(oHackerStone))
 			dir = other.aimDir;
 			isPlayerOwned = true;
 		}
+		audio_play_sound(shot, 10, false);
 		canShoot = false;
 		shotTimer = shotInterval;
 		shieldStrength = max(0, shieldStrength - shieldDrain);
@@ -299,6 +302,7 @@ if (instance_exists(oHackerStone))
 			shield.coolDown = true;
 			shield.visible = false;
 			shieldCoolDownTimer = shieldCoolDownInterval;
+			audio_play_sound(shield_gone, 10, false);
 		}
 		if (shield.coolDown)
 		{

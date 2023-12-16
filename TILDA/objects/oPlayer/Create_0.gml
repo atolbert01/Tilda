@@ -100,6 +100,7 @@ is_hit = function()
 		hitPoints-=bullet.damage;
 		if (hitPoints <= 0) die();
 		safetyTimer = safetyInterval;
+		audio_play_sound(take_hit, 10, false);
 		screen_shake(5, 1, 0.2);
 		return true;
 	}
@@ -113,6 +114,7 @@ is_hit = function()
 		hitPoints-=enemy.damage;
 		if (hitPoints <= 0) die();
 		safetyTimer = safetyInterval;
+		audio_play_sound(take_hit, 10, false);
 		screen_shake(5, 1, 0.2);
 		return true;
 	}
@@ -131,6 +133,8 @@ die = function()
 		doQuickSave = false;
 		sprite_index = sCheckpointIdle;
 	}
+	
+	audio_play_sound(player_death, 10, false);
 	
 	instance_create_layer(x, y - 16, "Instances", oGlitchGib);
 	instance_create_layer(x, y - 16, "Instances", oGlitchGib);

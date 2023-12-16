@@ -16,6 +16,7 @@ is_hit = function()
 		bullet.deactivate();
 		hit = true;
 		player.shieldStrength-=bullet.damage*4;
+		audio_play_sound(take_hit, 10, false);
 		screen_shake(2.5, 0.5, 0.2);
 		return true;
 	}
@@ -27,6 +28,7 @@ is_hit = function()
 		hsp = 0;
 		player.shieldStrength-=enemy.damage*4;
 		safetyTimer = safetyInterval;
+		audio_play_sound(take_hit, 10, false);
 		screen_shake(2.5, 0.5, 0.2);
 		return true;
 	}

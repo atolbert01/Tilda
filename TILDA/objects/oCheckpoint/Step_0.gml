@@ -10,4 +10,5 @@ if (!doQuickSave && player)
 	doQuickSave = true;
 	sprite_index = sCheckpointQuicksave;
 	image_index = 0;
+	audio_play_sound(checkpoint_sound, 10, false);
 }

@@ -343,6 +343,11 @@ function activate_hackerstone(player)
 	instance_activate_object(player.hackerStone);
 	player.hackerMode.active = true;
 	player.glitchBudget = 100;
+	if (!audio_is_playing(oracles_x_miracles)) 
+	{
+		audio_play_sound(oracles_x_miracles, 10, true);
+		show_debug_message("Play Music");
+	}
 }
 
 function activate_shield(player)
