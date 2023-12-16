@@ -7,6 +7,9 @@ if (!doQuickSave && player)
 		sprite_index = sCheckpointIdle;
 	}
 	player.lastCheckpoint = self;
+	player.hitPoints = 100;
+	player.shieldStrength = 100;
+	player.shield.coolDown = false;
 	doQuickSave = true;
 	sprite_index = sCheckpointQuicksave;
 	image_index = 0;

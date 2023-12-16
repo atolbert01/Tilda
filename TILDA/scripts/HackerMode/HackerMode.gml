@@ -331,6 +331,11 @@ function reset_hacks(player)
 	{
 		instance_destroy(self);
 	}
+	with (oGlitchBat)
+	{
+		die();
+	}
+	
 	with (oRegion)
 	{
 		instance_destroy(self);
