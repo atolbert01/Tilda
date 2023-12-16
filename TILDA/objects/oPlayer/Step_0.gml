@@ -30,6 +30,9 @@ if (isRespawning)
 var f1 = keyboard_check_pressed(vk_f1);
 var f2 = keyboard_check_pressed(vk_f2);
 
+if (f1) oGameManager.playSound = !oGameManager.playSound;
+
+
 var gpAim = !disableInput && (gamepad_button_check(0, gp_shoulderr) || gamepad_button_check(0, gp_shoulderl));
 var keyAim = !disableInput && (mouse_check_button(mb_right) || keyboard_check(vk_shift) || keyboard_check(ord("C")) || gpAim);
 
@@ -80,10 +83,6 @@ if (!useMouse && !gpAny && (window_mouse_get_delta_x() != 0 || window_mouse_get_
 {
 	useMouse = true;
 }
-
-
-if (f1 && !instance_exists(oHackerStone)) activate_hackerstone(self);
-if (f2 && !instance_exists(oShieldBubble)) activate_shield(self);
 
 
 grounded = false;
