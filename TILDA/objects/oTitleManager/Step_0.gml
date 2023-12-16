@@ -1,1 +1,1 @@
-if (keyboard_check_pressed(vk_space)) room_goto_next();
+if (keyboard_check_pressed(192) || keyboard_check_pressed(vk_tab) || gamepad_button_check_pressed(0, gp_select)) room_goto_next();

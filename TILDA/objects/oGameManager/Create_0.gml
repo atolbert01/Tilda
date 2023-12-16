@@ -10,3 +10,8 @@ add_checkpoint = function(checkpoint)
 {
 	ds_map_add(checkpoints, checkpoint.tagString, checkpoint );
 }
+
+playSound = false;
+if (!playSound) audio_master_gain(0);
+
+instance_create_layer(x, y, "System", oTutorialManager);
